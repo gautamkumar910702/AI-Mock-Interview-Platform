@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+//import axios from "axios";
 import { toast } from "react-toastify";
 import api from "../services/api";
 
@@ -38,7 +38,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await axios.post(
+      const response = await api.post(
          "/auth/login",
         formData
       );
