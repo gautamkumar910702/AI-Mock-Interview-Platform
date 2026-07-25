@@ -11,7 +11,7 @@ import {
   FaEyeSlash,
   FaUserPlus,
 } from "react-icons/fa";
-import api from "./services/api";
+import api from "../services/api";
 
 import "./Register.css";
 
