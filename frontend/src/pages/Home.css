@@ -1,0 +1,378 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f5f5f5;
+  color: #333;
+}
+
+/* ================= Navbar ================= */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  background: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo h2 {
+  color: #2563eb;
+}
+
+.logo-icon {
+  font-size: 28px;
+  color: #2563eb;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #2563eb;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.theme-btn,
+.login-btn,
+.register-btn {
+  padding: 10px 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.theme-btn {
+  background: #eee;
+}
+
+.login-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.register-btn {
+  background: #16a34a;
+  color: white;
+}
+
+/* ================= Hero ================= */
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 70px 8%;
+  gap: 40px;
+}
+
+.hero-left,
+.hero-right {
+  flex: 1;
+}
+
+.badge {
+  display: inline-block;
+  background: #dbeafe;
+  color: #2563eb;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 45px;
+  margin-bottom: 20px;
+}
+
+.hero h1 span {
+  color: #2563eb;
+}
+
+.hero p {
+  margin-bottom: 25px;
+  line-height: 1.7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.start-btn,
+.demo-btn,
+.cta-btn,
+.journey-btn button {
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.start-btn,
+.cta-btn,
+.journey-btn button {
+  background: #2563eb;
+  color: white;
+}
+
+.demo-btn {
+  background: #e5e7eb;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.users {
+  display: flex;
+}
+
+.users img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: -10px;
+  border: 2px solid white;
+}
+
+.question-card,
+.feedback-card {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.robot img {
+  width: 220px;
+  display: block;
+  margin: auto;
+}
+
+/* ================= Common Section ================= */
+
+.stats-section,
+.features-section,
+.work-section,
+.testimonial-section,
+.company-section,
+.cta-section {
+  padding: 70px 8%;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title h2 {
+  margin-bottom: 10px;
+}
+
+/* ================= Grid ================= */
+
+.stats-section,
+.features-grid,
+.work-grid,
+.testimonial-grid,
+.company-grid {
+  display: grid;
+  gap: 20px;
+}
+
+.stats-section {
+  grid-template-columns: repeat(4,1fr);
+}
+
+.features-grid,
+.work-grid,
+.testimonial-grid,
+.company-grid {
+  grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+}
+
+/* ================= Cards ================= */
+
+.stat-box,
+.feature-card,
+.work-card,
+.testimonial-card,
+.company-card {
+  background: white;
+  padding: 25px;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.feature-icon {
+  font-size: 35px;
+  margin-bottom: 15px;
+}
+
+.work-number {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+  background: #2563eb;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.testimonial-card img {
+  width: 80px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.company-card {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.journey-btn {
+  text-align: center;
+  margin-top: 40px;
+}
+
+/* ================= CTA ================= */
+
+.cta-section {
+  text-align: center;
+  background: #2563eb;
+  color: white;
+}
+
+.cta-btn {
+  margin-top: 20px;
+  background: white;
+  color: #2563eb;
+}
+
+/* ================= Footer ================= */
+
+.footer {
+  background: #1f2937;
+  color: white;
+  padding: 50px 8% 20px;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 30px;
+}
+
+.footer-box h3,
+.footer-box h2 {
+  margin-bottom: 15px;
+}
+
+.footer-box a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:900px){
+
+.navbar{
+flex-direction:column;
+gap:20px;
+}
+
+.nav-links{
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+.hero-buttons{
+justify-content:center;
+}
+
+.rating-section{
+justify-content:center;
+}
+
+.stats-section{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+@media(max-width:600px){
+
+.hero h1{
+font-size:32px;
+}
+
+.stats-section{
+grid-template-columns:1fr;
+}
+
+.nav-links{
+flex-direction:column;
+align-items:center;
+}
+
+.nav-buttons{
+flex-direction:column;
+width:100%;
+}
+
+.login-btn,
+.register-btn,
+.theme-btn{
+width:100%;
+}
+
+}

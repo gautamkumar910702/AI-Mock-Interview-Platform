@@ -1,0 +1,322 @@
+/* ==================================
+            Fade Animations
+================================== */
+
+.fade-in{
+
+    animation:fadeIn .6s ease-in-out;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==================================
+            Slide Up
+================================== */
+
+.slide-up{
+
+    animation:slideUp .6s ease;
+
+}
+
+@keyframes slideUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==================================
+            Slide Left
+================================== */
+
+.slide-left{
+
+    animation:slideLeft .6s ease;
+
+}
+
+@keyframes slideLeft{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ==================================
+            Slide Right
+================================== */
+
+.slide-right{
+
+    animation:slideRight .6s ease;
+
+}
+
+@keyframes slideRight{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(-40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/* ==================================
+            Zoom In
+================================== */
+
+.zoom-in{
+
+    animation:zoomIn .5s ease;
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.8);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==================================
+            Floating
+================================== */
+
+.floating{
+
+    animation:floating 3s ease-in-out infinite;
+
+}
+
+@keyframes floating{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==================================
+            Pulse
+================================== */
+
+.pulse{
+
+    animation:pulse 1.4s infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+    50%{
+
+        transform:scale(1.05);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==================================
+            Bounce
+================================== */
+
+.bounce{
+
+    animation:bounce 1s infinite;
+
+}
+
+@keyframes bounce{
+
+    0%,
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+}
+
+/* ==================================
+            Rotate
+================================== */
+
+.rotate{
+
+    animation:rotate 2s linear infinite;
+
+}
+
+@keyframes rotate{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/* ==================================
+            Spinner
+================================== */
+
+.spinner{
+
+    width:40px;
+
+    height:40px;
+
+    border:4px solid var(--border);
+
+    border-top:4px solid var(--primary);
+
+    border-radius:50%;
+
+    animation:rotate 1s linear infinite;
+
+    margin:auto;
+
+}
+
+/* ==================================
+            Hover Effects
+================================== */
+
+.hover-lift{
+
+    transition:var(--transition);
+
+}
+
+.hover-lift:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.hover-scale{
+
+    transition:var(--transition);
+
+}
+
+.hover-scale:hover{
+
+    transform:scale(1.05);
+
+}
+
+/* ==================================
+            Smooth Transition
+================================== */
+
+.transition{
+
+    transition:var(--transition);
+
+}

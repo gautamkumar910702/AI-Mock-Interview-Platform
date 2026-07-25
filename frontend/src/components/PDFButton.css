@@ -1,0 +1,59 @@
+.pdf-btn{
+
+    width:100%;
+
+    max-width:320px;
+
+    margin:auto;
+
+    background:#dc2626;
+
+    color:#fff;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:12px;
+
+    padding:15px 25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    box-shadow:0 10px 20px rgba(220,38,38,.25);
+
+}
+
+.pdf-btn:hover{
+
+    background:#b91c1c;
+
+    transform:translateY(-3px);
+
+}
+
+.pdf-btn:active{
+
+    transform:scale(.98);
+
+}
+
+.pdf-btn svg{
+
+    font-size:22px;
+
+}

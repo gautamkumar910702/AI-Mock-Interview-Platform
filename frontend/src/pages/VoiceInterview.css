@@ -1,0 +1,407 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.voice-page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+  background:var(--bg);
+}
+
+.voice-card{
+  width:100%;
+  max-width:850px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:40px;
+  box-shadow:var(--shadow);
+}
+
+.voice-card h1{
+  color:var(--text);
+  text-align:center;
+  margin-bottom:15px;
+  font-size:36px;
+}
+
+.voice-card>p{
+  color:var(--text-light);
+  text-align:center;
+  margin-bottom:35px;
+}
+
+.question-box{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:25px;
+  margin-bottom:25px;
+}
+
+.question-box h2{
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+.question-box p{
+  color:var(--text);
+  font-size:18px;
+  line-height:1.7;
+}
+/* ================= Timer ================= */
+
+.timer-box{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--bg);
+  border:1px solid var(--border);
+  padding:18px 22px;
+  border-radius:14px;
+  margin-bottom:20px;
+}
+
+.timer-box h3{
+  color:var(--text);
+}
+
+.timer-box span{
+  color:var(--primary);
+  font-size:28px;
+  font-weight:bold;
+}
+
+/* ================= Mic Status ================= */
+
+.mic-status{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.listening{
+  color:#ef4444;
+  font-weight:bold;
+  font-size:18px;
+  animation:pulse 1s infinite;
+}
+
+.stopped{
+  color:#16a34a;
+  font-weight:bold;
+  font-size:18px;
+}
+
+@keyframes pulse{
+
+0%{
+opacity:1;
+}
+
+50%{
+opacity:.4;
+}
+
+100%{
+opacity:1;
+}
+
+}
+/* ================= Transcript ================= */
+
+.transcript-box{
+  margin-bottom:30px;
+}
+
+.transcript-box h3{
+  color:var(--text);
+  margin-bottom:15px;
+}
+
+.transcript-box textarea{
+  width:100%;
+  min-height:220px;
+  resize:none;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px;
+  background:var(--bg);
+  color:var(--text);
+  font-size:16px;
+  outline:none;
+}
+
+/* ================= Controls ================= */
+
+.voice-controls{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.start-record-btn,
+.stop-record-btn,
+.back-btn{
+  border:none;
+  padding:15px 28px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:.3s;
+}
+
+.start-record-btn{
+  background:#16a34a;
+  color:#fff;
+}
+
+.start-record-btn:hover{
+  background:#15803d;
+}
+
+.stop-record-btn{
+  background:#dc2626;
+  color:#fff;
+}
+
+.stop-record-btn:hover{
+  background:#b91c1c;
+}
+
+.back-btn{
+  background:#6b7280;
+  color:#fff;
+}
+
+.back-btn:hover{
+  background:#4b5563;
+}
+/* ================= Responsive ================= */
+
+@media(max-width:768px){
+
+.voice-card{
+padding:25px;
+}
+
+.voice-card h1{
+font-size:30px;
+}
+
+.question-box p{
+font-size:16px;
+}
+
+.timer-box{
+flex-direction:column;
+gap:10px;
+}
+
+.voice-controls{
+flex-direction:column;
+}
+
+.start-record-btn,
+.stop-record-btn,
+.back-btn{
+width:100%;
+justify-content:center;
+}
+
+}
+
+@media(max-width:480px){
+
+.voice-page{
+padding:20px 10px;
+}
+
+.voice-card{
+padding:18px;
+}
+
+.voice-card h1{
+font-size:25px;
+}
+
+.timer-box span{
+font-size:22px;
+}
+
+.transcript-box textarea{
+min-height:170px;
+font-size:15px;
+}
+
+}
+/* ================= Evaluate Button ================= */
+
+.evaluate-btn{
+  border:none;
+  padding:15px 28px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:600;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  background:#2563eb;
+  color:#fff;
+  transition:.3s;
+}
+
+.evaluate-btn:hover{
+  background:#1d4ed8;
+}
+
+.evaluate-btn:disabled{
+  opacity:.7;
+  cursor:not-allowed;
+}
+
+/* ================= Evaluation Card ================= */
+
+.evaluation-card{
+  margin-top:35px;
+  padding:30px;
+  border-radius:18px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  box-shadow:var(--shadow);
+}
+
+.evaluation-card h2{
+  color:var(--primary);
+  margin-bottom:25px;
+  text-align:center;
+}
+
+/* ================= Score ================= */
+
+.score-box{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 20px;
+  border-radius:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  margin-bottom:20px;
+}
+
+.score-box h3{
+  color:var(--text);
+}
+
+.score-box span{
+  font-size:30px;
+  font-weight:bold;
+  color:#16a34a;
+}
+
+/* ================= Feedback ================= */
+
+.feedback-box{
+  margin-bottom:25px;
+}
+
+.feedback-box h3{
+  color:var(--primary);
+  margin-bottom:12px;
+}
+
+.feedback-box p{
+  color:var(--text);
+  line-height:1.8;
+}
+
+/* ================= Strength ================= */
+
+.strength-box{
+  margin-bottom:25px;
+}
+
+.strength-box h3{
+  color:#16a34a;
+  margin-bottom:15px;
+}
+
+.strength-box ul{
+  padding-left:22px;
+}
+
+.strength-box li{
+  margin-bottom:10px;
+  color:var(--text);
+}
+
+/* ================= Improvement ================= */
+
+.improvement-box h3{
+  color:#f97316;
+  margin-bottom:15px;
+}
+
+.improvement-box ul{
+  padding-left:22px;
+}
+
+.improvement-box li{
+  margin-bottom:10px;
+  color:var(--text);
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:768px){
+
+.evaluate-btn{
+  width:100%;
+  justify-content:center;
+}
+
+.evaluation-card{
+  padding:20px;
+}
+
+.score-box{
+  flex-direction:column;
+  gap:10px;
+  text-align:center;
+}
+
+.score-box span{
+  font-size:26px;
+}
+
+}
+
+@media(max-width:480px){
+
+.evaluation-card h2{
+  font-size:24px;
+}
+
+.feedback-box p,
+.strength-box li,
+.improvement-box li{
+  font-size:15px;
+}
+
+.score-box span{
+  font-size:22px;
+}
+
+}

@@ -1,0 +1,245 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.webcam-history-page{
+  min-height:100vh;
+  background:#f4f7fb;
+  padding:50px 25px;
+}
+
+.webcam-history-card{
+  max-width:1350px;
+  margin:auto;
+}
+
+/* ================= Header ================= */
+
+.history-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:40px;
+}
+
+.history-header h1{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  font-size:38px;
+  font-weight:700;
+  color:#1e293b;
+}
+
+.history-header svg{
+  color:#2563eb;
+}
+
+/* ================= Back Button ================= */
+
+.back-btn{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:14px 28px;
+  border-radius:12px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:.3s;
+}
+
+.back-btn:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
+}
+
+/* ================= Empty ================= */
+
+.empty-history{
+  background:white;
+  border-radius:20px;
+  padding:80px 30px;
+  text-align:center;
+  box-shadow:0 12px 35px rgba(0,0,0,.08);
+}
+
+.empty-history h2{
+  color:#1e293b;
+  font-size:34px;
+  margin-bottom:15px;
+}
+
+.empty-history p{
+  color:#64748b;
+  font-size:18px;
+}
+
+/* ================= Grid ================= */
+
+.history-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+  gap:30px;
+}
+
+/* ================= Card ================= */
+
+.history-item{
+  background:white;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,.08);
+  transition:.35s;
+}
+
+.history-item:hover{
+  transform:translateY(-8px);
+  box-shadow:0 18px 40px rgba(37,99,235,.18);
+}
+
+/* ================= Video ================= */
+
+.history-video{
+  width:100%;
+  height:240px;
+  object-fit:cover;
+  background:black;
+}
+
+/* ================= Info ================= */
+
+.history-info{
+  padding:22px;
+}
+
+.history-info h3{
+  font-size:22px;
+  color:#1e293b;
+  margin-bottom:18px;
+  line-height:1.5;
+}
+
+.history-info p{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+  color:#64748b;
+  font-size:16px;
+}
+
+.history-info svg{
+  color:#2563eb;
+}
+
+/* ================= Status ================= */
+
+.status{
+  display:inline-block;
+  margin-top:15px;
+  padding:10px 20px;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.status.completed{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.status.pending{
+  background:#fef3c7;
+  color:#b45309;
+}
+
+/* ================= Loading ================= */
+
+.webcam-history-loading{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:30px;
+  font-weight:bold;
+  color:#2563eb;
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:768px){
+
+.history-header{
+flex-direction:column;
+gap:25px;
+text-align:center;
+}
+
+.history-header h1{
+font-size:30px;
+}
+
+.back-btn{
+width:100%;
+justify-content:center;
+}
+
+.history-grid{
+grid-template-columns:1fr;
+}
+
+.history-video{
+height:220px;
+}
+
+}
+
+@media(max-width:480px){
+
+.webcam-history-page{
+padding:20px 15px;
+}
+
+.history-header h1{
+font-size:24px;
+}
+
+.empty-history{
+padding:50px 20px;
+}
+
+.empty-history h2{
+font-size:24px;
+}
+
+.empty-history p{
+font-size:16px;
+}
+
+.history-info h3{
+font-size:18px;
+}
+
+}
+.history-back-btn{
+  background:#2563eb;
+  color:#fff;
+  border:none;
+  padding:14px 28px;
+  border-radius:12px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:.3s;
+}
+
+.history-back-btn:hover{
+  background:#1d4ed8;
+}

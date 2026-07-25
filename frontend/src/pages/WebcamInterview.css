@@ -1,0 +1,225 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.webcam-page{
+  min-height:100vh;
+  background:var(--bg);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+}
+
+.webcam-card{
+  width:100%;
+  max-width:950px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:35px;
+  box-shadow:var(--shadow);
+}
+
+.webcam-card h1{
+  text-align:center;
+  color:var(--text);
+  margin-bottom:15px;
+  font-size:36px;
+}
+
+.webcam-card>p{
+  text-align:center;
+  color:var(--text-light);
+  margin-bottom:30px;
+}
+
+.camera-container{
+  width:100%;
+  overflow:hidden;
+  border-radius:18px;
+  border:2px solid var(--primary);
+  margin-bottom:30px;
+}
+
+.camera-preview{
+  width:100%;
+  display:block;
+}
+/* ================= Timer ================= */
+
+.recording-timer{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:18px 20px;
+  margin-bottom:25px;
+}
+
+.recording-timer h3{
+  color:var(--text);
+}
+
+.recording-timer span{
+  color:var(--primary);
+  font-size:28px;
+  font-weight:bold;
+}
+
+/* ================= Controls ================= */
+
+.recording-controls{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:30px;
+}
+
+.start-btn,
+.stop-btn,
+.preview-btn,
+.back-btn{
+  border:none;
+  border-radius:10px;
+  padding:15px 25px;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:.3s;
+}
+
+.start-btn{
+  background:#16a34a;
+  color:#fff;
+}
+
+.start-btn:hover{
+  background:#15803d;
+}
+
+.stop-btn{
+  background:#dc2626;
+  color:#fff;
+}
+
+.stop-btn:hover{
+  background:#b91c1c;
+}
+
+.preview-btn{
+  background:#2563eb;
+  color:#fff;
+}
+
+.preview-btn:hover{
+  background:#1d4ed8;
+}
+
+.back-btn{
+  background:#6b7280;
+  color:#fff;
+}
+
+.back-btn:hover{
+  background:#4b5563;
+}
+/* ================= Video Preview ================= */
+
+.video-preview-section{
+  margin-top:35px;
+}
+
+.video-preview-section h2{
+  color:var(--text);
+  margin-bottom:20px;
+  text-align:center;
+}
+
+.recorded-video{
+  width:100%;
+  border-radius:18px;
+  border:2px solid var(--primary);
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:768px){
+
+.webcam-card{
+padding:25px;
+}
+
+.recording-timer{
+flex-direction:column;
+gap:10px;
+}
+
+.recording-controls{
+flex-direction:column;
+}
+
+.start-btn,
+.stop-btn,
+.preview-btn,
+.back-btn{
+width:100%;
+justify-content:center;
+}
+
+}
+
+@media(max-width:480px){
+
+.webcam-page{
+padding:20px 10px;
+}
+
+.webcam-card{
+padding:18px;
+}
+
+.webcam-card h1{
+font-size:28px;
+}
+
+.recording-timer span{
+font-size:22px;
+}
+
+}
+/* ================= Upload Button ================= */
+
+.upload-btn{
+  border:none;
+  border-radius:10px;
+  padding:15px 25px;
+  background:#0891b2;
+  color:#fff;
+  font-size:16px;
+  font-weight:600;
+  cursor:pointer;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  transition:.3s;
+}
+
+.upload-btn:hover{
+  background:#0e7490;
+}
+
+.upload-btn:disabled{
+  background:#94a3b8;
+  cursor:not-allowed;
+  opacity:.8;
+}

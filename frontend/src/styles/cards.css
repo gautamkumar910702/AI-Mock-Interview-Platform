@@ -1,0 +1,183 @@
+/* ==================================
+            Base Card
+================================== */
+
+.card{
+
+    background:var(--card);
+
+    color:var(--text);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+/* ==================================
+          Card Header
+================================== */
+
+.card-header{
+
+    padding:20px;
+
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.card-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/* ==================================
+           Card Body
+================================== */
+
+.card-body{
+
+    padding:20px;
+
+}
+
+/* ==================================
+           Card Footer
+================================== */
+
+.card-footer{
+
+    padding:20px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==================================
+         Dashboard Cards
+================================== */
+
+.stat-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:25px;
+
+    transition:var(--transition);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+/* ==================================
+         Recent Card
+================================== */
+
+.recent-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:18px;
+
+    transition:var(--transition);
+
+}
+
+.recent-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* ==================================
+         Result Card
+================================== */
+
+.feedback-card,
+.score-card,
+.question-result-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:25px;
+
+}
+
+/* ==================================
+         Profile Card
+================================== */
+
+.profile-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:30px;
+
+}
+
+/* ==================================
+        Empty State
+================================== */
+
+.empty-card{
+
+    background:var(--card);
+
+    border:2px dashed var(--border);
+
+    border-radius:var(--radius);
+
+    padding:30px;
+
+    color:var(--text-light);
+
+    text-align:center;
+
+}

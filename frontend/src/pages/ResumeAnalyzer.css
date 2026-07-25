@@ -1,0 +1,190 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+.resume-page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px 20px;
+  background:var(--bg);
+}
+
+.resume-card{
+  width:100%;
+  max-width:700px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:40px;
+  text-align:center;
+  box-shadow:var(--shadow);
+}
+
+.resume-card h1{
+  color:var(--text);
+  margin-bottom:15px;
+  font-size:36px;
+}
+
+.resume-card p{
+  color:var(--text-light);
+  line-height:1.7;
+  margin-bottom:30px;
+}
+/* ================= Upload Box ================= */
+
+.upload-box{
+  border:2px dashed var(--primary);
+  border-radius:16px;
+  padding:40px 20px;
+  background:var(--bg);
+  transition:.3s;
+}
+
+.upload-box:hover{
+  border-color:#1d4ed8;
+}
+
+.upload-icon{
+  font-size:70px;
+  color:var(--primary);
+  margin-bottom:20px;
+}
+
+.upload-box h3{
+  color:var(--text);
+  margin-bottom:10px;
+}
+
+.upload-box p{
+  margin-bottom:20px;
+}
+
+.choose-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  background:var(--primary);
+  color:#fff;
+  padding:14px 28px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  transition:.3s;
+}
+
+.choose-btn:hover{
+  background:#1d4ed8;
+}
+
+.selected-file{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:15px;
+}
+
+.pdf-icon{
+  color:#ef4444;
+  font-size:28px;
+}
+/* ================= Buttons ================= */
+
+.resume-buttons{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.analyze-btn,
+.back-btn{
+  border:none;
+  cursor:pointer;
+  border-radius:10px;
+  padding:15px 28px;
+  font-size:16px;
+  font-weight:600;
+  transition:.3s;
+}
+
+.analyze-btn{
+  background:var(--primary);
+  color:#fff;
+}
+
+.analyze-btn:hover{
+  background:#1d4ed8;
+}
+
+.analyze-btn:disabled{
+  opacity:.7;
+  cursor:not-allowed;
+}
+
+.back-btn{
+  background:#6b7280;
+  color:#fff;
+}
+
+.back-btn:hover{
+  background:#4b5563;
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:768px){
+
+.resume-card{
+  padding:30px 20px;
+}
+
+.resume-card h1{
+  font-size:30px;
+}
+
+.upload-icon{
+  font-size:55px;
+}
+
+.resume-buttons{
+  flex-direction:column;
+}
+
+.analyze-btn,
+.back-btn{
+  width:100%;
+}
+
+}
+
+@media(max-width:480px){
+
+.resume-card{
+  padding:20px;
+}
+
+.resume-card h1{
+  font-size:26px;
+}
+
+.choose-btn{
+  width:100%;
+  justify-content:center;
+}
+
+.selected-file{
+  flex-direction:column;
+}
+
+}

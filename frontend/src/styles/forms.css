@@ -1,0 +1,263 @@
+/* ==================================
+            Form Container
+================================== */
+
+.form-container{
+
+    width:100%;
+
+    max-width:500px;
+
+    margin:auto;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    padding:35px;
+
+}
+
+/* ==================================
+            Form Header
+================================== */
+
+.form-title{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    color:var(--text);
+
+    text-align:center;
+
+    margin-bottom:10px;
+
+}
+
+.form-subtitle{
+
+    color:var(--text-light);
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+/* ==================================
+            Form Group
+================================== */
+
+.form-group{
+
+    margin-bottom:20px;
+
+}
+
+/* ==================================
+            Labels
+================================== */
+
+.form-label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:var(--text);
+
+    font-weight:600;
+
+}
+
+/* ==================================
+            Input
+================================== */
+
+.form-input{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    font-size:15px;
+
+    transition:var(--transition);
+
+}
+
+.form-input:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+
+}
+
+/* ==================================
+            Textarea
+================================== */
+
+.form-textarea{
+
+    width:100%;
+
+    min-height:120px;
+
+    resize:vertical;
+
+    padding:14px 16px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    transition:var(--transition);
+
+}
+
+.form-textarea:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+}
+
+/* ==================================
+            Select
+================================== */
+
+.form-select{
+
+    width:100%;
+
+    padding:14px 16px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+}
+
+/* ==================================
+            Input Icon
+================================== */
+
+.input-group{
+
+    position:relative;
+
+}
+
+.input-icon{
+
+    position:absolute;
+
+    top:50%;
+
+    left:15px;
+
+    transform:translateY(-50%);
+
+    color:var(--text-light);
+
+}
+
+.input-group .form-input{
+
+    padding-left:45px;
+
+}
+
+/* ==================================
+            Error
+================================== */
+
+.form-error{
+
+    color:var(--danger);
+
+    font-size:13px;
+
+    margin-top:6px;
+
+}
+
+/* ==================================
+            Success
+================================== */
+
+.form-success{
+
+    color:var(--success);
+
+    font-size:13px;
+
+    margin-top:6px;
+
+}
+
+/* ==================================
+            Responsive
+================================== */
+
+@media(max-width:768px){
+
+.form-container{
+
+padding:25px;
+
+}
+
+.form-title{
+
+font-size:26px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.form-container{
+
+padding:20px;
+
+}
+
+.form-input,
+.form-select,
+.form-textarea{
+
+font-size:14px;
+
+padding:12px;
+
+}
+
+}

@@ -1,0 +1,87 @@
+.voice-btn{
+
+    width:100%;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:10px;
+
+    transition:.3s;
+
+}
+
+.voice-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.voice-btn.recording{
+
+    background:#dc2626;
+
+    animation:pulse 1s infinite;
+
+}
+
+.voice-btn.recording:hover{
+
+    background:#b91c1c;
+
+}
+
+.voice-btn.disabled{
+
+    background:#9ca3af;
+
+    cursor:not-allowed;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.03);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+.voice-btn svg{
+
+font-size:18px;
+
+}

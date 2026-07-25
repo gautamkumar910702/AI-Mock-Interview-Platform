@@ -1,0 +1,3774 @@
+/* =========================================================
+   INTERVIEW ROOM V2
+   Professional AI Mock Interview Interface
+========================================================= */
+
+
+/* =========================================================
+   Reset
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   Main Interview Page
+========================================================= */
+
+.interview-v2 {
+  min-height: 100vh;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(59, 130, 246, 0.08),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.07),
+      transparent 28%
+    ),
+    var(--bg);
+
+  color: var(--text);
+
+  padding: 24px 30px 110px;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   Interview Header
+========================================================= */
+
+.interview-header {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 24px;
+
+  padding: 20px 24px;
+
+  margin-bottom: 18px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   Header Left
+========================================================= */
+
+.interview-header-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-width: 0;
+}
+
+
+.interview-brand-icon {
+  width: 52px;
+
+  height: 52px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 16px;
+
+  font-size: 27px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37, 99, 235, 0.15),
+      rgba(79, 70, 229, 0.15)
+    );
+
+  border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+
+.interview-header-left h2 {
+  color: var(--text);
+
+  font-size: 25px;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+
+  margin-bottom: 5px;
+}
+
+
+.interview-header-left p {
+  color: var(--text-light);
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   Header Right
+========================================================= */
+
+.interview-header-right {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   Recording Badge
+========================================================= */
+
+.recording-badge {
+  min-height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border-radius: 12px;
+
+  background: rgba(239, 68, 68, 0.1);
+
+  border: 1px solid rgba(239, 68, 68, 0.25);
+
+  color: #ef4444;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+}
+
+
+.recording-dot {
+  width: 9px;
+
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  box-shadow:
+    0 0 0 4px rgba(239, 68, 68, 0.12);
+
+  animation:
+    interviewRecordingPulse 1.2s infinite;
+}
+
+
+@keyframes interviewRecordingPulse {
+
+  0% {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.45;
+
+    transform: scale(1.25);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   Answered Badge
+========================================================= */
+
+.answered-badge {
+  min-height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 10px 15px;
+
+  border-radius: 12px;
+
+  background: rgba(34, 197, 94, 0.1);
+
+  border: 1px solid rgba(34, 197, 94, 0.22);
+
+  color: #16a34a;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+
+.answered-badge svg {
+  font-size: 16px;
+}
+
+
+/* =========================================================
+   Timer Box
+========================================================= */
+
+.timer-box {
+  min-height: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 8px 15px;
+
+  border-radius: 13px;
+
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+}
+
+
+.timer-box > svg {
+  flex-shrink: 0;
+
+  color: var(--primary);
+
+  font-size: 20px;
+}
+
+
+.timer-box div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1px;
+}
+
+
+.timer-box small {
+  color: var(--text-light);
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+
+.timer-box strong {
+  color: var(--primary);
+
+  font-size: 19px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   Interview Information Bar
+========================================================= */
+
+.interview-info-bar {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-start;
+
+  gap: 22px;
+
+  padding: 14px 22px;
+
+  margin-bottom: 20px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 16px;
+
+  box-shadow: var(--shadow);
+
+  overflow-x: auto;
+}
+
+
+.interview-info-item {
+  min-width: max-content;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.interview-info-item span {
+  color: var(--text-light);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.7px;
+
+  text-transform: uppercase;
+}
+
+
+.interview-info-item strong {
+  color: var(--text);
+
+  font-size: 14px;
+
+  font-weight: 700;
+}
+
+
+.interview-info-divider {
+  width: 1px;
+
+  height: 30px;
+
+  flex-shrink: 0;
+
+  background: var(--border);
+}
+
+
+/* =========================================================
+   Main Interview Layout
+========================================================= */
+
+.interview-main-layout {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.65fr)
+    minmax(320px, 0.75fr);
+
+  gap: 22px;
+
+  align-items: start;
+}
+
+
+/* =========================================================
+   Left Question Section
+========================================================= */
+
+.interview-question-section {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   Question Progress Header
+========================================================= */
+
+.question-progress-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+
+.question-label {
+  display: block;
+
+  color: var(--primary);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 5px;
+}
+
+
+.question-progress-header h3 {
+  color: var(--text);
+
+  font-size: 17px;
+
+  font-weight: 700;
+}
+
+
+.question-progress-percent {
+  min-width: 52px;
+
+  padding: 7px 10px;
+
+  text-align: center;
+
+  border-radius: 10px;
+
+  background: rgba(59, 130, 246, 0.1);
+
+  color: var(--primary);
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   Main Progress Bar
+========================================================= */
+
+.interview-progress-bar {
+  width: 100%;
+
+  height: 8px;
+
+  background: rgba(148, 163, 184, 0.2);
+
+  border-radius: 100px;
+
+  overflow: hidden;
+}
+
+
+.interview-progress-fill {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #4f46e5
+    );
+
+  transition:
+    width 0.4s ease;
+}
+
+
+/* =========================================================
+   Question Card
+========================================================= */
+
+.question-card-v2 {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 18px;
+
+  padding: 24px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+}
+
+
+.question-number {
+  width: 48px;
+
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 20px rgba(37, 99, 235, 0.22);
+}
+
+
+.question-content {
+  min-width: 0;
+
+  flex: 1;
+}
+
+
+.question-content > span {
+  display: block;
+
+  color: var(--text-light);
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.7px;
+
+  margin-bottom: 8px;
+}
+
+
+.question-content h2 {
+  color: var(--text);
+
+  font-size: clamp(
+    18px,
+    2vw,
+    23px
+  );
+
+  font-weight: 700;
+
+  line-height: 1.55;
+
+  word-break: break-word;
+}
+/* =========================================================
+   Answer Card
+========================================================= */
+
+.answer-card-v2 {
+  width: 100%;
+
+  padding: 24px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.answer-card-v2:focus-within {
+  border-color:
+    rgba(59, 130, 246, 0.45);
+
+  box-shadow:
+    var(--shadow),
+    0 0 0 3px rgba(59, 130, 246, 0.08);
+}
+
+
+/* =========================================================
+   Answer Card Header
+========================================================= */
+
+.answer-card-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 16px;
+}
+
+
+.answer-label {
+  display: block;
+
+  color: var(--primary);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  margin-bottom: 5px;
+}
+
+
+.answer-card-header h3 {
+  color: var(--text);
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   Saving Answer Badge
+========================================================= */
+
+.saving-answer-badge {
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 7px 12px;
+
+  border-radius: 100px;
+
+  background:
+    rgba(59, 130, 246, 0.1);
+
+  border:
+    1px solid rgba(59, 130, 246, 0.2);
+
+  color: var(--primary);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.3px;
+
+  animation:
+    savingAnswerPulse 1.2s infinite;
+}
+
+
+@keyframes savingAnswerPulse {
+
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.55;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   Answer Textarea
+========================================================= */
+
+.answer-box-v2 {
+  width: 100%;
+
+  min-height: 260px;
+
+  max-height: 420px;
+
+  padding: 18px 20px;
+
+  resize: vertical;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 15px;
+
+  outline: none;
+
+  background: var(--bg);
+
+  color: var(--text);
+
+  font-family: inherit;
+
+  font-size: 15px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.answer-box-v2::placeholder {
+  color: var(--text-light);
+
+  opacity: 0.7;
+}
+
+
+.answer-box-v2:hover {
+  border-color:
+    rgba(59, 130, 246, 0.35);
+}
+
+
+.answer-box-v2:focus {
+  border-color: var(--primary);
+
+  box-shadow:
+    0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+
+.answer-box-v2:disabled {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   Answer Textarea Scrollbar
+========================================================= */
+
+.answer-box-v2::-webkit-scrollbar {
+  width: 8px;
+}
+
+
+.answer-box-v2::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.answer-box-v2::-webkit-scrollbar-thumb {
+  background:
+    rgba(100, 116, 139, 0.45);
+
+  border-radius: 20px;
+}
+
+
+.answer-box-v2::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(59, 130, 246, 0.65);
+}
+
+
+/* =========================================================
+   Speech Information Row
+========================================================= */
+
+.speech-information {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  margin-top: 13px;
+}
+
+
+/* =========================================================
+   Speech Status Area
+========================================================= */
+
+.speech-status-area {
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   Microphone Ready / Idle
+========================================================= */
+
+.speech-idle {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--text-light);
+
+  font-size: 12px;
+
+  font-weight: 600;
+}
+
+
+.speech-idle svg {
+  color: var(--primary);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   Listening Status
+========================================================= */
+
+.speech-listening {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  color: #ef4444;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.speech-pulse {
+  width: 9px;
+
+  height: 9px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  box-shadow:
+    0 0 0 0 rgba(239, 68, 68, 0.35);
+
+  animation:
+    speechPulseAnimation 1.3s infinite;
+}
+
+
+@keyframes speechPulseAnimation {
+
+  0% {
+    box-shadow:
+      0 0 0 0
+      rgba(239, 68, 68, 0.35);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 9px
+      rgba(239, 68, 68, 0);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0
+      rgba(239, 68, 68, 0);
+  }
+
+}
+
+
+/* =========================================================
+   Character Count
+========================================================= */
+
+.answer-character-count {
+  flex-shrink: 0;
+
+  color: var(--text-light);
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   Interim Speech Box
+========================================================= */
+
+.interim-speech-box {
+  width: 100%;
+
+  margin-top: 14px;
+
+  padding: 12px 14px;
+
+  border-radius: 12px;
+
+  background:
+    rgba(59, 130, 246, 0.07);
+
+  border:
+    1px solid rgba(59, 130, 246, 0.16);
+}
+
+
+.interim-speech-box > span {
+  display: block;
+
+  color: var(--primary);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.7px;
+
+  text-transform: uppercase;
+
+  margin-bottom: 5px;
+}
+
+
+.interim-speech-box p {
+  color: var(--text);
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  font-style: italic;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   Speech Error Message
+========================================================= */
+
+.speech-error-message {
+  width: 100%;
+
+  margin-top: 13px;
+
+  padding: 11px 14px;
+
+  border-radius: 11px;
+
+  background:
+    rgba(239, 68, 68, 0.08);
+
+  border:
+    1px solid rgba(239, 68, 68, 0.18);
+
+  color: #dc2626;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   Voice Control Area
+========================================================= */
+
+.voice-control-area {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 17px;
+
+  padding-top: 17px;
+
+  border-top:
+    1px solid var(--border);
+}
+
+
+/* =========================================================
+   Voice Button
+========================================================= */
+
+.voice-btn-v2 {
+  min-width: 165px;
+
+  min-height: 46px;
+
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 12px 18px;
+
+  border: none;
+
+  border-radius: 12px;
+
+  outline: none;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px rgba(37, 99, 235, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.voice-btn-v2:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 24px
+    rgba(37, 99, 235, 0.28);
+}
+
+
+.voice-btn-v2:active:not(:disabled) {
+  transform:
+    translateY(0);
+}
+
+
+.voice-btn-v2 svg {
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   Voice Button - Listening
+========================================================= */
+
+.voice-btn-v2.listening {
+  background:
+    linear-gradient(
+      135deg,
+      #dc2626,
+      #ef4444
+    );
+
+  box-shadow:
+    0 7px 18px
+    rgba(239, 68, 68, 0.22);
+
+  animation:
+    listeningButtonPulse 1.5s infinite;
+}
+
+
+.voice-btn-v2.listening:hover:not(:disabled) {
+  box-shadow:
+    0 10px 24px
+    rgba(239, 68, 68, 0.3);
+}
+
+
+@keyframes listeningButtonPulse {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.025);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   Disabled Voice Button
+========================================================= */
+
+.voice-btn-v2:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   Voice Help Text
+========================================================= */
+
+.voice-help-text {
+  color: var(--text-light);
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  line-height: 1.55;
+}
+/* =========================================================
+   Right Camera Section
+========================================================= */
+
+.interview-camera-section {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   Camera Card
+========================================================= */
+
+.camera-card-v2 {
+  width: 100%;
+
+  padding: 18px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 20px;
+
+  box-shadow: var(--shadow);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   Camera Header
+========================================================= */
+
+.camera-card-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 15px;
+}
+
+
+.camera-label {
+  display: block;
+
+  color: var(--primary);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  text-transform: uppercase;
+
+  margin-bottom: 4px;
+}
+
+
+.camera-card-header h3 {
+  color: var(--text);
+
+  font-size: 16px;
+
+  font-weight: 700;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   Camera Recording Badge
+========================================================= */
+
+.camera-recording {
+  flex-shrink: 0;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 7px 10px;
+
+  border-radius: 100px;
+
+  background:
+    rgba(239, 68, 68, 0.09);
+
+  border:
+    1px solid rgba(239, 68, 68, 0.2);
+
+  color: #ef4444;
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.4px;
+
+  text-transform: uppercase;
+}
+
+
+.camera-recording > span {
+  width: 8px;
+
+  height: 8px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ef4444;
+
+  animation:
+    cameraRecordingPulse 1.2s infinite;
+}
+
+
+@keyframes cameraRecordingPulse {
+
+  0% {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+
+    transform: scale(1.3);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   Camera Preview Container
+========================================================= */
+
+.camera-preview {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 10;
+
+  min-height: 250px;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #111827,
+      #020617
+    );
+
+  border:
+    1px solid rgba(148, 163, 184, 0.16);
+}
+
+
+/* =========================================================
+   Live Webcam
+========================================================= */
+
+.live-camera-v2 {
+  display: block;
+
+  width: 100%;
+
+  height: 100%;
+
+  min-height: 250px;
+
+  object-fit: cover;
+
+  border-radius: inherit;
+
+  background: #020617;
+}
+
+
+/* =========================================================
+   Camera Overlay
+========================================================= */
+
+.camera-overlay {
+  position: absolute;
+
+  top: 13px;
+
+  left: 13px;
+
+  right: 13px;
+
+  z-index: 5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  pointer-events: none;
+}
+
+
+.camera-overlay > span {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 6px 10px;
+
+  border-radius: 100px;
+
+  background:
+    rgba(15, 23, 42, 0.7);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.15);
+
+  color: #ffffff;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  backdrop-filter: blur(7px);
+
+  -webkit-backdrop-filter: blur(7px);
+}
+
+
+/* =========================================================
+   Camera Overlay Recording
+========================================================= */
+
+.camera-overlay-recording {
+  color: #ffffff !important;
+
+  background:
+    rgba(220, 38, 38, 0.78) !important;
+}
+
+
+.camera-overlay-recording > span {
+  width: 7px;
+
+  height: 7px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  animation:
+    cameraOverlayPulse 1s infinite;
+}
+
+
+@keyframes cameraOverlayPulse {
+
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   Camera Unavailable
+========================================================= */
+
+.camera-unavailable {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  padding: 25px;
+
+  text-align: center;
+
+  color: #ffffff;
+}
+
+
+.camera-unavailable > svg {
+  font-size: 34px;
+
+  color: #94a3b8;
+
+  margin-bottom: 3px;
+}
+
+
+.camera-unavailable h3 {
+  color: #ffffff;
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+
+.camera-unavailable p {
+  max-width: 280px;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   Retry Camera Button
+========================================================= */
+
+.camera-unavailable button {
+  margin-top: 5px;
+
+  padding: 9px 15px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.camera-unavailable button:hover {
+  transform: translateY(-1px);
+
+  opacity: 0.92;
+}
+
+
+/* =========================================================
+   Side Progress Card
+========================================================= */
+
+.side-progress-card {
+  width: 100%;
+
+  padding: 19px;
+
+  background: var(--card);
+
+  border: 1px solid var(--border);
+
+  border-radius: 18px;
+
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   Side Progress Header
+========================================================= */
+
+.side-progress-header {
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+
+  gap: 15px;
+
+  margin-bottom: 15px;
+}
+
+
+.side-progress-header span {
+  display: block;
+
+  color: var(--text-light);
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.9px;
+
+  margin-bottom: 4px;
+}
+
+
+.side-progress-header h3 {
+  color: var(--text);
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+
+.side-progress-header > strong {
+  flex-shrink: 0;
+
+  color: var(--primary);
+
+  font-size: 20px;
+
+  font-weight: 800;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   Side Progress Bar
+========================================================= */
+
+.side-progress-bar {
+  width: 100%;
+
+  height: 8px;
+
+  overflow: hidden;
+
+  border-radius: 100px;
+
+  background:
+    rgba(148, 163, 184, 0.2);
+}
+
+
+.side-progress-fill {
+  height: 100%;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      90deg,
+      #2563eb,
+      #4f46e5
+    );
+
+  transition:
+    width 0.4s ease;
+}
+
+
+/* =========================================================
+   Side Progress Details
+========================================================= */
+
+.side-progress-details {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  gap: 10px;
+
+  margin-top: 17px;
+}
+
+
+.side-progress-details > div {
+  padding: 12px;
+
+  border-radius: 12px;
+
+  background: var(--bg);
+
+  border: 1px solid var(--border);
+}
+
+
+.side-progress-details span {
+  display: block;
+
+  color: var(--text-light);
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  margin-bottom: 5px;
+}
+
+
+.side-progress-details strong {
+  display: block;
+
+  color: var(--text);
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   Interview Tip Card
+========================================================= */
+
+.interview-tip-card {
+  width: 100%;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 13px;
+
+  padding: 17px;
+
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(245, 158, 11, 0.08),
+      rgba(249, 115, 22, 0.05)
+    );
+
+  border:
+    1px solid rgba(245, 158, 11, 0.18);
+
+  box-shadow: var(--shadow);
+}
+
+
+/* =========================================================
+   Tip Icon
+========================================================= */
+
+.tip-icon {
+  width: 40px;
+
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    rgba(245, 158, 11, 0.13);
+
+  font-size: 19px;
+}
+
+
+.interview-tip-card > div:last-child {
+  min-width: 0;
+
+  flex: 1;
+}
+
+
+.interview-tip-card span {
+  display: block;
+
+  color: #d97706;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.9px;
+
+  margin-bottom: 5px;
+}
+
+
+.interview-tip-card p {
+  color: var(--text);
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   Camera Card Hover
+========================================================= */
+
+.camera-card-v2,
+.side-progress-card,
+.interview-tip-card {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+.camera-card-v2:hover,
+.side-progress-card:hover {
+  border-color:
+    rgba(59, 130, 246, 0.22);
+}
+
+
+/* =========================================================
+   Dark Mode Camera Improvements
+========================================================= */
+
+[data-theme="dark"] .camera-card-v2 {
+  background: var(--card);
+}
+
+
+[data-theme="dark"] .side-progress-details > div {
+  background:
+    rgba(15, 23, 42, 0.45);
+}
+
+
+[data-theme="dark"] .interview-tip-card {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(245, 158, 11, 0.09),
+      rgba(249, 115, 22, 0.04)
+    );
+}
+/* =========================================================
+   Bottom Interview Controls
+========================================================= */
+
+.interview-bottom-controls {
+  position: fixed;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  z-index: 100;
+
+  min-height: 82px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 14px 30px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--card) 92%,
+      transparent
+    );
+
+  border-top:
+    1px solid var(--border);
+
+  box-shadow:
+    0 -8px 30px
+    rgba(15, 23, 42, 0.08);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================================================
+   Bottom Question Information
+========================================================= */
+
+.bottom-question-info {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+  min-width: max-content;
+}
+
+
+.bottom-question-info span {
+  color: var(--text-light);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.7px;
+}
+
+
+.bottom-question-info strong {
+  color: var(--text);
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   Navigation Buttons Container
+========================================================= */
+
+.interview-navigation-buttons {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 12px;
+}
+
+
+/* =========================================================
+   Common Navigation Button Style
+========================================================= */
+
+.previous-btn-v2,
+.next-btn-v2,
+.finish-btn-v2 {
+  min-height: 46px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  padding: 12px 20px;
+
+  border-radius: 12px;
+
+  font-family: inherit;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  outline: none;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+
+.previous-btn-v2 svg,
+.next-btn-v2 svg,
+.finish-btn-v2 svg {
+  flex-shrink: 0;
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   Previous Button
+========================================================= */
+
+.previous-btn-v2 {
+  min-width: 125px;
+
+  background: var(--card);
+
+  border:
+    1px solid var(--border);
+
+  color: var(--text);
+
+  box-shadow:
+    0 4px 12px
+    rgba(15, 23, 42, 0.05);
+}
+
+
+.previous-btn-v2:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(59, 130, 246, 0.4);
+
+  color: var(--primary);
+
+  box-shadow:
+    0 8px 18px
+    rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   Next Button
+========================================================= */
+
+.next-btn-v2 {
+  min-width: 145px;
+
+  border: none;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
+
+  box-shadow:
+    0 7px 18px
+    rgba(37, 99, 235, 0.22);
+}
+
+
+.next-btn-v2:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(37, 99, 235, 0.3);
+}
+
+
+/* =========================================================
+   Finish Interview Button
+========================================================= */
+
+.finish-btn-v2 {
+  min-width: 175px;
+
+  border: none;
+
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #16a34a,
+      #22c55e
+    );
+
+  box-shadow:
+    0 7px 18px
+    rgba(34, 197, 94, 0.22);
+}
+
+
+.finish-btn-v2:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(34, 197, 94, 0.3);
+}
+
+
+/* =========================================================
+   Navigation Button Active State
+========================================================= */
+
+.previous-btn-v2:active:not(:disabled),
+.next-btn-v2:active:not(:disabled),
+.finish-btn-v2:active:not(:disabled) {
+  transform:
+    translateY(0)
+    scale(0.98);
+}
+
+
+/* =========================================================
+   Disabled Navigation Buttons
+========================================================= */
+
+.previous-btn-v2:disabled,
+.next-btn-v2:disabled,
+.finish-btn-v2:disabled {
+  opacity: 0.5;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   Loading / Upload / Evaluation Screen
+========================================================= */
+
+.interview-loading-screen {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 9999;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 25px;
+
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(59, 130, 246, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(79, 70, 229, 0.1),
+      transparent 35%
+    ),
+    var(--bg);
+}
+
+
+/* =========================================================
+   Loading Card
+========================================================= */
+
+.interview-loader-card {
+  width: 100%;
+
+  max-width: 500px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 42px 35px;
+
+  text-align: center;
+
+  background: var(--card);
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 25px 65px
+    rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================================
+   Loader Spinner
+========================================================= */
+
+.loader-spinner {
+  width: 54px;
+
+  height: 54px;
+
+  margin-bottom: 22px;
+
+  border:
+    5px solid
+    rgba(59, 130, 246, 0.15);
+
+  border-top-color:
+    var(--primary);
+
+  border-radius: 50%;
+
+  animation:
+    interviewLoaderSpin
+    0.85s linear infinite;
+}
+
+
+@keyframes interviewLoaderSpin {
+
+  from {
+    transform:
+      rotate(0deg);
+  }
+
+  to {
+    transform:
+      rotate(360deg);
+  }
+
+}
+
+
+/* =========================================================
+   Loading Card Heading
+========================================================= */
+
+.interview-loader-card h2 {
+  color: var(--text);
+
+  font-size: 23px;
+
+  font-weight: 800;
+
+  line-height: 1.35;
+
+  margin-bottom: 10px;
+}
+
+
+/* =========================================================
+   Loading Card Description
+========================================================= */
+
+.interview-loader-card > p {
+  max-width: 390px;
+
+  color: var(--text-light);
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   Upload / Evaluation Status
+========================================================= */
+
+.upload-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-top: 22px;
+
+  padding: 10px 15px;
+
+  border-radius: 100px;
+
+  background:
+    rgba(59, 130, 246, 0.09);
+
+  border:
+    1px solid
+    rgba(59, 130, 246, 0.18);
+
+  color: var(--primary);
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+
+.upload-status svg {
+  flex-shrink: 0;
+
+  font-size: 15px;
+
+  animation:
+    uploadStatusPulse
+    1.4s ease-in-out infinite;
+}
+
+
+@keyframes uploadStatusPulse {
+
+  0% {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+
+  50% {
+    opacity: 0.55;
+
+    transform:
+      scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   Loading Card Animation
+========================================================= */
+
+.interview-loader-card {
+  animation:
+    interviewLoaderCardEnter
+    0.35s ease;
+}
+
+
+@keyframes interviewLoaderCardEnter {
+
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(12px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   Dark Mode Bottom Controls
+========================================================= */
+
+[data-theme="dark"]
+.interview-bottom-controls {
+  box-shadow:
+    0 -8px 30px
+    rgba(0, 0, 0, 0.28);
+}
+
+
+[data-theme="dark"]
+.previous-btn-v2 {
+  background:
+    var(--card);
+}
+
+
+/* =========================================================
+   Button Focus Accessibility
+========================================================= */
+
+.previous-btn-v2:focus-visible,
+.next-btn-v2:focus-visible,
+.finish-btn-v2:focus-visible {
+  outline:
+    3px solid
+    rgba(59, 130, 246, 0.22);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   Voice Button Focus Accessibility
+========================================================= */
+
+.voice-btn-v2:focus-visible {
+  outline:
+    3px solid
+    rgba(59, 130, 246, 0.22);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   Camera Retry Button Focus
+========================================================= */
+
+.camera-unavailable
+button:focus-visible {
+  outline:
+    3px solid
+    rgba(59, 130, 246, 0.35);
+
+  outline-offset: 3px;
+}/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+
+/* =========================================================
+   Large Laptop / Small Desktop
+   1200px and Below
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .interview-v2 {
+    padding:
+      20px
+      22px
+      105px;
+  }
+
+
+  .interview-main-layout {
+    grid-template-columns:
+      minmax(0, 1.45fr)
+      minmax(300px, 0.8fr);
+
+    gap: 18px;
+  }
+
+
+  .interview-header {
+    padding:
+      18px
+      20px;
+  }
+
+
+  .interview-header-left h2 {
+    font-size: 22px;
+  }
+
+
+  .question-card-v2 {
+    padding: 21px;
+  }
+
+
+  .answer-card-v2 {
+    padding: 21px;
+  }
+
+
+  .answer-box-v2 {
+    min-height: 240px;
+  }
+
+
+  .camera-preview {
+    min-height: 220px;
+  }
+
+
+  .live-camera-v2 {
+    min-height: 220px;
+  }
+
+}
+
+
+/* =========================================================
+   Tablet / Smaller Laptop
+   992px and Below
+========================================================= */
+
+@media (max-width: 992px) {
+
+  .interview-v2 {
+    padding:
+      18px
+      18px
+      110px;
+  }
+
+
+  /* =====================================================
+     Header
+  ===================================================== */
+
+  .interview-header {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+    gap: 17px;
+  }
+
+
+  .interview-header-right {
+    width: 100%;
+
+    justify-content:
+      flex-start;
+  }
+
+
+  /* =====================================================
+     Main Layout Becomes Single Column
+  ===================================================== */
+
+  .interview-main-layout {
+    grid-template-columns:
+      1fr;
+
+    gap: 20px;
+  }
+
+
+  /* =====================================================
+     Camera Section
+  ===================================================== */
+
+  .interview-camera-section {
+    display: grid;
+
+    grid-template-columns:
+      minmax(0, 1.4fr)
+      minmax(250px, 0.8fr);
+
+    gap: 18px;
+
+    align-items: start;
+  }
+
+
+  .camera-card-v2 {
+    grid-row:
+      span 2;
+  }
+
+
+  .camera-preview {
+    min-height: 300px;
+  }
+
+
+  .live-camera-v2 {
+    min-height: 300px;
+  }
+
+
+  /* =====================================================
+     Answer
+  ===================================================== */
+
+  .answer-box-v2 {
+    min-height: 230px;
+  }
+
+
+  /* =====================================================
+     Bottom Controls
+  ===================================================== */
+
+  .interview-bottom-controls {
+    padding:
+      13px
+      20px;
+  }
+
+}
+
+
+/* =========================================================
+   Tablet Portrait
+   768px and Below
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .interview-v2 {
+    padding:
+      14px
+      14px
+      125px;
+  }
+
+
+  /* =====================================================
+     Header
+  ===================================================== */
+
+  .interview-header {
+    padding: 17px;
+
+    border-radius: 17px;
+  }
+
+
+  .interview-header-left {
+    width: 100%;
+  }
+
+
+  .interview-brand-icon {
+    width: 46px;
+
+    height: 46px;
+
+    border-radius: 13px;
+
+    font-size: 23px;
+  }
+
+
+  .interview-header-left h2 {
+    font-size: 20px;
+  }
+
+
+  .interview-header-left p {
+    font-size: 12px;
+  }
+
+
+  /* =====================================================
+     Header Badges
+  ===================================================== */
+
+  .interview-header-right {
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+  }
+
+
+  .recording-badge {
+    min-height: 44px;
+
+    width: 100%;
+  }
+
+
+  .answered-badge {
+    min-height: 44px;
+
+    width: 100%;
+  }
+
+
+  .timer-box {
+    grid-column:
+      1 / -1;
+
+    width: 100%;
+
+    justify-content:
+      center;
+  }
+
+
+  /* =====================================================
+     Information Bar
+  ===================================================== */
+
+  .interview-info-bar {
+    gap: 16px;
+
+    padding:
+      13px
+      16px;
+
+    border-radius: 14px;
+  }
+
+
+  /* =====================================================
+     Question Progress
+  ===================================================== */
+
+  .question-progress-header {
+    gap: 12px;
+  }
+
+
+  .question-progress-header h3 {
+    font-size: 15px;
+  }
+
+
+  /* =====================================================
+     Question Card
+  ===================================================== */
+
+  .question-card-v2 {
+    gap: 14px;
+
+    padding: 18px;
+
+    border-radius: 17px;
+  }
+
+
+  .question-number {
+    width: 42px;
+
+    height: 42px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+  }
+
+
+  .question-content h2 {
+    font-size: 18px;
+
+    line-height: 1.55;
+  }
+
+
+  /* =====================================================
+     Answer Card
+  ===================================================== */
+
+  .answer-card-v2 {
+    padding: 18px;
+
+    border-radius: 17px;
+  }
+
+
+  .answer-card-header h3 {
+    font-size: 15px;
+  }
+
+
+  .answer-box-v2 {
+    min-height: 220px;
+
+    padding: 15px;
+
+    font-size: 14px;
+  }
+
+
+  /* =====================================================
+     Voice Controls
+  ===================================================== */
+
+  .voice-control-area {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+    gap: 10px;
+  }
+
+
+  .voice-btn-v2 {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+
+  /* =====================================================
+     Camera Section Single Column
+  ===================================================== */
+
+  .interview-camera-section {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+
+  .camera-card-v2 {
+    padding: 16px;
+
+    border-radius: 17px;
+  }
+
+
+  .camera-preview {
+    min-height: 280px;
+
+    aspect-ratio:
+      16 / 10;
+  }
+
+
+  .live-camera-v2 {
+    min-height: 280px;
+  }
+
+
+  /* =====================================================
+     Progress / Tip Cards
+  ===================================================== */
+
+  .side-progress-card,
+  .interview-tip-card {
+    border-radius: 16px;
+  }
+
+
+  /* =====================================================
+     Bottom Navigation
+  ===================================================== */
+
+  .interview-bottom-controls {
+    min-height: auto;
+
+    align-items:
+      stretch;
+
+    flex-direction:
+      column;
+
+    gap: 9px;
+
+    padding:
+      10px
+      14px
+      12px;
+  }
+
+
+  .bottom-question-info {
+    width: 100%;
+
+    flex-direction:
+      row;
+
+    align-items:
+      center;
+
+    justify-content:
+      space-between;
+  }
+
+
+  .interview-navigation-buttons {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 9px;
+  }
+
+
+  .previous-btn-v2,
+  .next-btn-v2,
+  .finish-btn-v2 {
+    width: 100%;
+
+    min-width: 0;
+
+    min-height: 44px;
+
+    padding:
+      11px
+      12px;
+  }
+
+}
+
+
+/* =========================================================
+   Mobile
+   576px and Below
+========================================================= */
+
+@media (max-width: 576px) {
+
+  .interview-v2 {
+    padding:
+      10px
+      10px
+      125px;
+  }
+
+
+  /* =====================================================
+     Header
+  ===================================================== */
+
+  .interview-header {
+    padding: 15px;
+
+    margin-bottom: 12px;
+
+    border-radius: 15px;
+  }
+
+
+  .interview-header-left {
+    align-items:
+      flex-start;
+
+    gap: 11px;
+  }
+
+
+  .interview-brand-icon {
+    width: 42px;
+
+    height: 42px;
+
+    font-size: 21px;
+  }
+
+
+  .interview-header-left h2 {
+    font-size: 18px;
+
+    margin-bottom: 3px;
+  }
+
+
+  .interview-header-left p {
+    font-size: 11px;
+
+    line-height: 1.5;
+  }
+
+
+  /* =====================================================
+     Header Right
+  ===================================================== */
+
+  .interview-header-right {
+    grid-template-columns:
+      1fr
+      1fr;
+
+    gap: 8px;
+  }
+
+
+  .recording-badge,
+  .answered-badge {
+    padding:
+      9px
+      8px;
+
+    font-size: 11px;
+  }
+
+
+  .timer-box {
+    min-height: 46px;
+
+    padding:
+      7px
+      12px;
+  }
+
+
+  .timer-box strong {
+    font-size: 17px;
+  }
+
+
+  /* =====================================================
+     Information Bar
+  ===================================================== */
+
+  .interview-info-bar {
+    gap: 14px;
+
+    margin-bottom: 16px;
+
+    padding:
+      11px
+      13px;
+
+    border-radius: 13px;
+  }
+
+
+  .interview-info-item span {
+    font-size: 8px;
+  }
+
+
+  .interview-info-item strong {
+    font-size: 12px;
+  }
+
+
+  .interview-info-divider {
+    height: 26px;
+  }
+
+
+  /* =====================================================
+     Main Layout
+  ===================================================== */
+
+  .interview-main-layout {
+    gap: 16px;
+  }
+
+
+  .interview-question-section {
+    gap: 14px;
+  }
+
+
+  /* =====================================================
+     Progress Header
+  ===================================================== */
+
+  .question-progress-header {
+    align-items:
+      flex-end;
+  }
+
+
+  .question-label {
+    font-size: 8px;
+  }
+
+
+  .question-progress-header h3 {
+    font-size: 14px;
+  }
+
+
+  .question-progress-percent {
+    min-width: 46px;
+
+    padding:
+      6px
+      8px;
+
+    font-size: 11px;
+  }
+
+
+  /* =====================================================
+     Question Card
+  ===================================================== */
+
+  .question-card-v2 {
+    padding: 15px;
+
+    gap: 11px;
+  }
+
+
+  .question-number {
+    width: 38px;
+
+    height: 38px;
+
+    font-size: 12px;
+  }
+
+
+  .question-content > span {
+    font-size: 9px;
+
+    margin-bottom: 5px;
+  }
+
+
+  .question-content h2 {
+    font-size: 16px;
+
+    line-height: 1.55;
+  }
+
+
+  /* =====================================================
+     Answer Card
+  ===================================================== */
+
+  .answer-card-v2 {
+    padding: 15px;
+  }
+
+
+  .answer-card-header {
+    gap: 10px;
+
+    margin-bottom: 13px;
+  }
+
+
+  .answer-label {
+    font-size: 8px;
+  }
+
+
+  .answer-card-header h3 {
+    font-size: 14px;
+  }
+
+
+  .saving-answer-badge {
+    padding:
+      6px
+      9px;
+
+    font-size: 9px;
+  }
+
+
+  .answer-box-v2 {
+    min-height: 200px;
+
+    max-height: 350px;
+
+    padding: 13px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+  }
+
+
+  /* =====================================================
+     Speech Information
+  ===================================================== */
+
+  .speech-information {
+    align-items:
+      flex-start;
+
+    flex-direction:
+      column;
+
+    gap: 7px;
+  }
+
+
+  .speech-idle,
+  .speech-listening {
+    font-size: 11px;
+  }
+
+
+  .answer-character-count {
+    font-size: 10px;
+  }
+
+
+  /* =====================================================
+     Interim Speech
+  ===================================================== */
+
+  .interim-speech-box {
+    padding:
+      10px
+      12px;
+  }
+
+
+  .interim-speech-box p {
+    font-size: 12px;
+  }
+
+
+  /* =====================================================
+     Voice Button
+  ===================================================== */
+
+  .voice-control-area {
+    margin-top: 14px;
+
+    padding-top: 14px;
+  }
+
+
+  .voice-btn-v2 {
+    min-height: 44px;
+
+    font-size: 12px;
+  }
+
+
+  .voice-help-text {
+    font-size: 11px;
+  }
+
+
+  /* =====================================================
+     Camera
+  ===================================================== */
+
+  .camera-card-v2 {
+    padding: 14px;
+  }
+
+
+  .camera-card-header {
+    margin-bottom: 12px;
+  }
+
+
+  .camera-card-header h3 {
+    font-size: 14px;
+  }
+
+
+  .camera-label {
+    font-size: 8px;
+  }
+
+
+  .camera-recording {
+    padding:
+      6px
+      8px;
+
+    font-size: 8px;
+  }
+
+
+  .camera-preview {
+    min-height: 220px;
+
+    border-radius: 13px;
+  }
+
+
+  .live-camera-v2 {
+    min-height: 220px;
+  }
+
+
+  /* =====================================================
+     Side Progress
+  ===================================================== */
+
+  .side-progress-card {
+    padding: 15px;
+  }
+
+
+  .side-progress-header h3 {
+    font-size: 14px;
+  }
+
+
+  .side-progress-header > strong {
+    font-size: 18px;
+  }
+
+
+  .side-progress-details > div {
+    padding: 10px;
+  }
+
+
+  /* =====================================================
+     Interview Tip
+  ===================================================== */
+
+  .interview-tip-card {
+    padding: 14px;
+
+    gap: 10px;
+  }
+
+
+  .tip-icon {
+    width: 36px;
+
+    height: 36px;
+
+    font-size: 17px;
+  }
+
+
+  .interview-tip-card p {
+    font-size: 11px;
+  }
+
+
+  /* =====================================================
+     Bottom Controls
+  ===================================================== */
+
+  .interview-bottom-controls {
+    padding:
+      9px
+      10px
+      11px;
+  }
+
+
+  .bottom-question-info span {
+    font-size: 9px;
+  }
+
+
+  .bottom-question-info strong {
+    font-size: 13px;
+  }
+
+
+  .previous-btn-v2,
+  .next-btn-v2,
+  .finish-btn-v2 {
+    min-height: 42px;
+
+    border-radius: 10px;
+
+    font-size: 11px;
+
+    gap: 6px;
+  }
+
+
+  /* =====================================================
+     Loading Screen
+  ===================================================== */
+
+  .interview-loading-screen {
+    padding: 15px;
+  }
+
+
+  .interview-loader-card {
+    padding:
+      32px
+      20px;
+
+    border-radius: 19px;
+  }
+
+
+  .loader-spinner {
+    width: 47px;
+
+    height: 47px;
+
+    border-width: 4px;
+
+    margin-bottom: 18px;
+  }
+
+
+  .interview-loader-card h2 {
+    font-size: 19px;
+  }
+
+
+  .interview-loader-card > p {
+    font-size: 12px;
+  }
+
+
+  .upload-status {
+    margin-top: 18px;
+
+    font-size: 11px;
+  }
+
+}
+
+
+/* =========================================================
+   Very Small Mobile
+   400px and Below
+========================================================= */
+
+@media (max-width: 400px) {
+
+  .interview-v2 {
+    padding:
+      8px
+      8px
+      130px;
+  }
+
+
+  /* =====================================================
+     Header
+  ===================================================== */
+
+  .interview-header {
+    padding: 13px;
+  }
+
+
+  .interview-brand-icon {
+    width: 38px;
+
+    height: 38px;
+
+    font-size: 19px;
+  }
+
+
+  .interview-header-left h2 {
+    font-size: 16px;
+  }
+
+
+  .interview-header-left p {
+    font-size: 10px;
+  }
+
+
+  /* =====================================================
+     Badges Stack
+  ===================================================== */
+
+  .interview-header-right {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .timer-box {
+    grid-column: auto;
+  }
+
+
+  /* =====================================================
+     Question
+  ===================================================== */
+
+  .question-card-v2 {
+    flex-direction:
+      column;
+  }
+
+
+  .question-number {
+    width: 36px;
+
+    height: 36px;
+  }
+
+
+  .question-content h2 {
+    font-size: 15px;
+  }
+
+
+  /* =====================================================
+     Answer Header
+  ===================================================== */
+
+  .answer-card-header {
+    flex-direction:
+      column;
+  }
+
+
+  .answer-box-v2 {
+    min-height: 180px;
+  }
+
+
+  /* =====================================================
+     Camera
+  ===================================================== */
+
+  .camera-preview {
+    min-height: 190px;
+  }
+
+
+  .live-camera-v2 {
+    min-height: 190px;
+  }
+
+
+  /* =====================================================
+     Progress Details
+  ===================================================== */
+
+  .side-progress-details {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  /* =====================================================
+     Bottom Buttons
+  ===================================================== */
+
+  .interview-navigation-buttons {
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+
+  .previous-btn-v2,
+  .next-btn-v2,
+  .finish-btn-v2 {
+    padding:
+      10px
+      7px;
+
+    font-size: 10px;
+  }
+
+}
+
+
+/* =========================================================
+   Short Screen / Small Laptop Height
+========================================================= */
+
+@media (
+  max-height: 700px
+)
+and (
+  min-width: 769px
+) {
+
+  .interview-v2 {
+    padding-top: 15px;
+  }
+
+
+  .interview-header {
+    padding:
+      14px
+      18px;
+
+    margin-bottom: 13px;
+  }
+
+
+  .interview-brand-icon {
+    width: 45px;
+
+    height: 45px;
+  }
+
+
+  .interview-info-bar {
+    padding:
+      10px
+      18px;
+
+    margin-bottom: 15px;
+  }
+
+
+  .question-card-v2 {
+    padding: 18px;
+  }
+
+
+  .answer-card-v2 {
+    padding: 18px;
+  }
+
+
+  .answer-box-v2 {
+    min-height: 180px;
+  }
+
+
+  .camera-preview {
+    min-height: 210px;
+  }
+
+
+  .live-camera-v2 {
+    min-height: 210px;
+  }
+
+}
+
+
+/* =========================================================
+   Reduced Motion Accessibility
+========================================================= */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+
+  .recording-dot,
+
+  .camera-recording > span,
+
+  .camera-overlay-recording > span,
+
+  .speech-pulse,
+
+  .voice-btn-v2.listening,
+
+  .saving-answer-badge,
+
+  .loader-spinner,
+
+  .upload-status svg {
+
+    animation: none;
+
+  }
+
+
+  .interview-progress-fill,
+
+  .side-progress-fill,
+
+  .voice-btn-v2,
+
+  .previous-btn-v2,
+
+  .next-btn-v2,
+
+  .finish-btn-v2,
+
+  .camera-card-v2,
+
+  .side-progress-card {
+
+    transition: none;
+
+  }
+
+}
