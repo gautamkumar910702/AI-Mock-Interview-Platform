@@ -11,6 +11,7 @@ import {
   FaEyeSlash,
   FaUserPlus,
 } from "react-icons/fa";
+import api from "../services/api";
 
 import "./Register.css";
 
@@ -62,7 +63,7 @@ function Register() {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/auth/register",
+         "/auth/register",
         formData
       );
 
