@@ -40,120 +40,63 @@ function Register() {
   };
 
   // Handle Register
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-//     // Frontend Validation
-//     if (
-//       !formData.fullName ||
-//       !formData.email ||
-//       !formData.password ||
-//       !formData.confirmPassword
-//     ) {
-//       toast.error("All Fields are Required");
-//       return;
-//     }
+    // Frontend Validation
+    if (
+      !formData.fullName ||
+      !formData.email ||
+      !formData.password ||
+      !formData.confirmPassword
+    ) {
+      toast.error("All Fields are Required");
+      return;
+    }
 
-//     if (formData.password !== formData.confirmPassword) {
-//       toast.error("Passwords do not match");
-//       return;
-//     }
+    if (formData.password !== formData.confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
 
-//     setLoading(true);
+    setLoading(true);
 
-//     try {
-//       const response = await api.post(
-//   "/auth/register",
-//   formData
-// );
+    try {
+      const response = await api.post(
+  "/auth/register",
+  formData
+);
 
-//       toast.success(response.data.message);
+      toast.success(response.data.message);
 
-//       // Clear Form
-//       setFormData({
-//         fullName: "",
-//         email: "",
-//         password: "",
-//         confirmPassword: "",
-//       });
+      // Clear Form
+      setFormData({
+        fullName: "",
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
 
-//       // Redirect to Login
-//       setTimeout(() => {
-//         navigate("/login");
-//       }, 1500);
-//     // } catch (error) {
-//     //   toast.error(
-//     //     error.response?.data?.message || "Something went wrong"
-//     //   );
-//     // }
-//     // } catch (error) {
-//   console.log("Full Error:", error);
-//   console.log("Response:", error.response);
-//   console.log("Data:", error.response?.data);
+      // Redirect to Login
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
+    // } catch (error) {
+    //   toast.error(
+    //     error.response?.data?.message || "Something went wrong"
+    //   );
+    // }
+    // } catch (error) {
+  console.log("Full Error:", error);
+  console.log("Response:", error.response);
+  console.log("Data:", error.response?.data);
 
-//   toast.error(error.response?.data?.message || "Something went wrong");
-// } finally {
-//       setLoading(false);
-//     }
-//   };
-// Handle Register
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  toast.error(error.response?.data?.message || "Something went wrong");
+} finally {
+      setLoading(false);
+    }
+  };
 
-  // Frontend Validation
-  if (
-    !formData.fullName ||
-    !formData.email ||
-    !formData.password ||
-    !formData.confirmPassword
-  ) {
-    toast.error("All Fields are Required");
-    return;
-  }
-
-  if (formData.password !== formData.confirmPassword) {
-    toast.error("Passwords do not match");
-    return;
-  }
-
-  setLoading(true);
-
-  try {
-    const response = await api.post(
-      "/auth/register",
-      formData
-    );
-
-    console.log("✅ Success Response:", response);
-
-    toast.success(response.data.message);
-
-    // Clear Form
-    setFormData({
-      fullName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
-
-    // Redirect
-    setTimeout(() => {
-      navigate("/login");
-    }, 1500);
-
-  } catch (error) {
-    console.log("❌ Full Error:", error);
-    console.log("❌ Response:", error.response);
-    console.log("❌ Status:", error.response?.status);
-    console.log("❌ Data:", error.response?.data);
-
-    toast.error(
-      error.response?.data?.message || "Something went wrong"
-    );
-  } finally {
-    setLoading(false);
-  }
-};
 
   return (
     <div className="register-container">
