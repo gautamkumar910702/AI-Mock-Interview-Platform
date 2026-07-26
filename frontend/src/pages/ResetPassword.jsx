@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
 import { toast } from "react-toastify";
 
 import {
@@ -10,6 +9,8 @@ import {
   FaKey,
   FaArrowLeft,
 } from "react-icons/fa";
+
+import api from "../services/api";
 
 import "./ResetPassword.css";
 
@@ -50,8 +51,8 @@ function ResetPassword() {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        `http://localhost:5000/api/auth/reset-password/${token}`,
+      const response = await api.post(
+        `/auth/reset-password/${token}`,
         formData
       );
 
@@ -83,7 +84,6 @@ function ResetPassword() {
         <form onSubmit={handleSubmit}>
 
           <div className="input-box">
-
             <FaLock className="icon" />
 
             <input
@@ -97,29 +97,18 @@ function ResetPassword() {
 
             <span
               className="password-toggle"
-              onClick={() =>
-                setShowPassword(!showPassword)
-              }
+              onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? (
-                <FaEyeSlash />
-              ) : (
-                <FaEye />
-              )}
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
 
           </div>
 
           <div className="input-box">
-
             <FaKey className="icon" />
 
             <input
-              type={
-                showConfirmPassword
-                  ? "text"
-                  : "password"
-              }
+              type={showConfirmPassword ? "text" : "password"}
               placeholder="Confirm Password"
               name="confirmPassword"
               value={formData.confirmPassword}
@@ -130,9 +119,7 @@ function ResetPassword() {
             <span
               className="password-toggle"
               onClick={() =>
-                setShowConfirmPassword(
-                  !showConfirmPassword
-                )
+                setShowConfirmPassword(!showConfirmPassword)
               }
             >
               {showConfirmPassword ? (

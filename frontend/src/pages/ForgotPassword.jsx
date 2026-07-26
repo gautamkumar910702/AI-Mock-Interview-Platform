@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -8,6 +7,8 @@ import {
   FaPaperPlane,
   FaArrowLeft,
 } from "react-icons/fa";
+
+import api from "../services/api";
 
 import "./ForgotPassword.css";
 
@@ -26,8 +27,8 @@ const ForgotPassword = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/forgot-password",
+      const response = await api.post(
+        "/auth/forgot-password",
         {
           email,
         }
@@ -66,6 +67,7 @@ const ForgotPassword = () => {
               placeholder="Enter Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
 
