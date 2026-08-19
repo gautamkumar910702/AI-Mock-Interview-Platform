@@ -1,532 +1,893 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import {
   FaRobot,
   FaMoon,
+  FaSun,
   FaPlayCircle,
   FaRocket,
   FaStar,
+  FaArrowRight,
+  FaCheckCircle,
+  FaBrain,
+  FaChartLine,
+  FaFileAlt,
+  FaTimes,
 } from "react-icons/fa";
-
 import "./Home.css";
-
+// ======================================================
+// HOME PAGE DATA
+// ======================================================
+const stats = [
+  {
+    value: "10K+",
+    label: "Active Users",
+  },
+  {
+    value: "50K+",
+    label: "Interviews Completed",
+  },
+  {
+    value: "95%",
+    label: "Success Rate",
+  },
+  {
+    value: "500+",
+    label: "Interview Questions",
+  },
+];
+const features = [
+  {
+    icon: <FaBrain />,
+    title: "AI Voice Interview",
+    description:
+      "Practice realistic technical interviews with AI-powered questions and instant feedback.",
+  },
+  {
+    icon: <FaChartLine />,
+    title: "Detailed Analytics",
+    description:
+      "Understand your strengths, weaknesses, scores and overall interview performance.",
+  },
+  {
+    icon: <FaFileAlt />,
+    title: "AI Resume Review",
+    description:
+      "Upload your resume and get useful AI-powered suggestions to improve it.",
+  },
+  {
+    icon: <FaArrowRight />,
+    title: "Interview Reports",
+    description:
+      "Review your interview performance and track your improvement over time.",
+  },
+];
+const steps = [
+  {
+    number: "01",
+    title: "Choose Your Interview",
+    description:
+      "Select your preferred category, difficulty level and interview type.",
+  },
+  {
+    number: "02",
+    title: "Answer Questions",
+    description:
+      "Answer AI-generated questions just like you would in a real interview.",
+  },
+  {
+    number: "03",
+    title: "Get AI Feedback",
+    description:
+      "Receive detailed feedback, scores, strengths and improvement suggestions.",
+  },
+  {
+    number: "04",
+    title: "Track Your Progress",
+    description:
+      "Review your previous interviews and continuously improve your performance.",
+  },
+];
+const testimonials = [
+  {
+    name: "Rahul Sharma",
+    role: "Software Engineer",
+    image: "https://i.pravatar.cc/100?img=11",
+    feedback:
+      "This platform helped me practice consistently and improve my confidence before interviews.",
+  },
+  {
+    name: "Priya Verma",
+    role: "Frontend Developer",
+    image: "https://i.pravatar.cc/100?img=22",
+    feedback:
+      "The AI feedback made it much easier to understand where I was making mistakes.",
+  },
+  {
+    name: "Aman Singh",
+    role: "MERN Developer",
+    image: "https://i.pravatar.cc/100?img=35",
+    feedback:
+      "A very useful platform for technical interview preparation and regular practice.",
+  },
+];
+const companies = [
+  "Google",
+  "Microsoft",
+  "Amazon",
+  "TCS",
+  "Infosys",
+  "Wipro",
+  "Accenture",
+  "Capgemini",
+];
+// ======================================================
+// HOME COMPONENT
+// ======================================================
 function Home() {
-
   const navigate = useNavigate();
-
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedTheme = localStorage.getItem("aiMockTheme");
+    if (savedTheme) {
+      return savedTheme === "dark";
+    }
+    return true;
+  });
+  const [showDemo, setShowDemo] = useState(false);
+  // ====================================================
+  // APPLY THEME
+  // ====================================================
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      "data-theme",
+      darkMode ? "dark" : "light"
+    );
+    localStorage.setItem(
+      "aiMockTheme",
+      darkMode ? "dark" : "light"
+    );
+  }, [darkMode]);
+  // ====================================================
+  // CLOSE DEMO WITH ESCAPE
+  // ====================================================
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setShowDemo(false);
+      }
+    };
+    if (showDemo) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
+    };
+  }, [showDemo]);
+  // ====================================================
+  // NAVIGATION HANDLERS
+  // ====================================================
+  const handleLogin = () => {
+    navigate("/login");
+  };
+  const handleRegister = () => {
+    navigate("/register");
+  };
+  const handleStartInterview = () => {
+    navigate("/login");
+  };
+  // ====================================================
+  // DEMO HANDLERS
+  // ====================================================
+  const handleWatchDemo = () => {
+    setShowDemo(true);
+  };
+  const handleDemoLogin = () => {
+    setShowDemo(false);
+    navigate("/login");
+  };
+  const handleDemoRegister = () => {
+    setShowDemo(false);
+    navigate("/register");
+  };
+  // ====================================================
+  // THEME HANDLER
+  // ====================================================
+  const toggleTheme = () => {
+    setDarkMode((previousMode) => !previousMode);
+  };
   return (
-    <>
-      {/* ================= NAVBAR ================= */}
-
+    <div className={`home-page ${darkMode ? "dark-mode" : "light-mode"}`}>
+      {/* ==================================================
+          NAVBAR
+      ================================================== */}
       <header className="navbar">
-
-        <div className="logo">
-
-          <FaRobot className="logo-icon" />
-
-          <h2>AI Mock Interview</h2>
-
-        </div>
-
-        <nav>
-
-          <ul className="nav-links">
-
-            <li>
-              <a href="#">Home</a>
-            </li>
-
-            <li>
-              <a href="#">Features</a>
-            </li>
-
-            <li>
-              <a href="#">Interview Sets</a>
-            </li>
-
-            <li>
-              <a href="#">Leaderboard</a>
-            </li>
-
-            <li>
-              <a href="#">Pricing</a>
-            </li>
-
-            <li>
-              <a href="#">About</a>
-            </li>
-
-          </ul>
-
-        </nav>
-
-        <div className="nav-buttons">
-
-          <button className="theme-btn">
-            <FaMoon />
-          </button>
-
-          <button
-            className="login-btn"
-            onClick={() => navigate("/login")}
+        <div className="navbar-container">
+          <div
+            className="logo"
+            onClick={() => navigate("/")}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                navigate("/");
+              }
+            }}
           >
-            Login
-          </button>
-
-          <button
-            className="register-btn"
-            onClick={() => navigate("/register")}
-          >
-            Register
-          </button>
-
-        </div>
-
-      </header>
-
-      {/* ================= HERO ================= */}
-
-      <section className="hero">
-
-        <div className="hero-left">
-
-          <span className="badge">
-            🚀 AI Powered Interview Platform
-          </span>
-
-          <h1>
-            Ace Your Next
-            <br />
-            Interview With
-            <span> AI Power ⚡</span>
-          </h1>
-
-          <p>
-            Practice real interview questions,
-            receive instant AI feedback,
-            improve communication,
-            and track your interview journey.
-          </p>
-
-          <div className="hero-buttons">
-
-            <button
-              className="start-btn"
-              onClick={() => navigate("/login")}
-            >
-              <FaRocket />
-              Start Free Interview
-            </button>
-
-            <button className="demo-btn">
-              <FaPlayCircle />
-              Watch Demo
-            </button>
-
-          </div>
-
-          {/* Rating */}
-
-          <div className="rating-section">
-
-            <div className="users">
-
-              <img src="https://i.pravatar.cc/45?img=1" alt="" />
-              <img src="https://i.pravatar.cc/45?img=2" alt="" />
-              <img src="https://i.pravatar.cc/45?img=3" alt="" />
-              <img src="https://i.pravatar.cc/45?img=4" alt="" />
-              <img src="https://i.pravatar.cc/45?img=5" alt="" />
-
+            <div className="logo-icon-wrapper">
+              <FaRobot className="logo-icon" />
             </div>
-
-            <div>
-
-              <div className="stars">
-
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-                <FaStar />
-
-              </div>
-
-              <h3>
-                4.9/5
-                <span> (12,000+ Users)</span>
-              </h3>
-
+            <div className="logo-text">
+              <h2>AI Mock</h2>
+              <span>Interview</span>
             </div>
-
           </div>
-
-        </div>
-
-        {/* Right */}
-
-        <div className="hero-right">
-
-          <div className="question-card">
-
-            <h3>Interview Question</h3>
-
-            <p>
-              Explain the concept of
-              Object-Oriented Programming in Java.
-            </p>
-
-            <span>Java</span>
-
-          </div>
-
-          <div className="robot">
-
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"
-              alt="AI Robot"
-            />
-
-          </div>
-
-          <div className="feedback-card">
-
-            <h3>AI Feedback</h3>
-
-            <ul>
-
-              <li>✅ Good Explanation</li>
-              <li>✅ Relevant Example</li>
-              <li>❌ Improve Confidence</li>
-
+          <nav className="desktop-nav">
+            <ul className="nav-links">
+              <li>
+                <a href="#home">Home</a>
+              </li>
+              <li>
+                <a href="#features">Features</a>
+              </li>
+              <li>
+                <a href="#how-it-works">How It Works</a>
+              </li>
+              <li>
+                <a href="#companies">Companies</a>
+              </li>
+              <li>
+                <a href="#about">About</a>
+              </li>
             </ul>
-
+          </nav>
+          <div className="nav-buttons">
+            <button
+              type="button"
+              className="theme-btn"
+              onClick={toggleTheme}
+              aria-label={
+                darkMode
+                  ? "Switch to light mode"
+                  : "Switch to dark mode"
+              }
+              title={
+                darkMode
+                  ? "Switch to light mode"
+                  : "Switch to dark mode"
+              }
+            >
+              {darkMode ? <FaSun /> : <FaMoon />}
+            </button>
+            <button
+              type="button"
+              className="login-btn"
+              onClick={handleLogin}
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              className="register-btn"
+              onClick={handleRegister}
+            >
+              Get Started
+            </button>
           </div>
-
         </div>
-
-      </section>
-            {/* ===================== STATISTICS ===================== */}
-
-      <section className="stats-section">
-
-        <div className="stat-box">
-          <h2>10,000+</h2>
-          <p>Active Users</p>
-        </div>
-
-        <div className="stat-box">
-          <h2>50,000+</h2>
-          <p>Interviews Conducted</p>
-        </div>
-
-        <div className="stat-box">
-          <h2>95%</h2>
-          <p>Success Rate</p>
-        </div>
-
-        <div className="stat-box">
-          <h2>500+</h2>
-          <p>Interview Questions</p>
-        </div>
-
-      </section>
-
-      {/* ===================== FEATURES ===================== */}
-
-      <section className="features-section">
-
-        <div className="section-title">
-
-          <h2>Why Choose Our Platform?</h2>
-
-          <p>
-            Everything you need to crack technical interviews with
-            confidence.
-          </p>
-
-        </div>
-
-        <div className="features-grid">
-
-          <div className="feature-card">
-            <div className="feature-icon">🎤</div>
-            <h3>AI Voice Interview</h3>
-            <p>
-              Practice with realistic AI voice interviews and receive
-              instant feedback.
-            </p>
+      </header>
+      {/* ==================================================
+          HERO SECTION
+      ================================================== */}
+      <main>
+        <section
+          className="hero"
+          id="home"
+        >
+          <div className="hero-container">
+            <div className="hero-left">
+              <div className="hero-badge">
+                <span className="badge-dot"></span>
+                <span>
+                  AI-Powered Interview Practice
+                </span>
+              </div>
+              <h1>
+                Prepare Smarter.
+                <br />
+                <span className="gradient-text">
+                  Interview Better.
+                </span>
+              </h1>
+              <p className="hero-description">
+                Practice realistic technical interviews with AI,
+                improve your answers, receive instant feedback,
+                and build the confidence you need to crack your
+                dream job.
+              </p>
+              <div className="hero-buttons">
+                <button
+                  type="button"
+                  className="start-btn"
+                  onClick={handleStartInterview}
+                >
+                  <FaRocket />
+                  <span>
+                    Start Free Interview
+                  </span>
+                  <FaArrowRight className="button-arrow" />
+                </button>
+                <button
+                  type="button"
+                  className="demo-btn"
+                  onClick={handleWatchDemo}
+                >
+                  <FaPlayCircle />
+                  <span>
+                    Watch Demo
+                  </span>
+                </button>
+              </div>
+              <div className="hero-trust">
+                <div className="user-avatars">
+                  <img
+                    src="https://i.pravatar.cc/45?img=1"
+                    alt="User"
+                  />
+                  <img
+                    src="https://i.pravatar.cc/45?img=2"
+                    alt="User"
+                  />
+                  <img
+                    src="https://i.pravatar.cc/45?img=3"
+                    alt="User"
+                  />
+                  <img
+                    src="https://i.pravatar.cc/45?img=4"
+                    alt="User"
+                  />
+                  <span className="avatar-more">
+                    +12K
+                  </span>
+                </div>
+                <div className="trust-content">
+                  <div className="stars">
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                  </div>
+                  <p>
+                    <strong>4.9/5</strong>
+                    <span>
+                      Trusted by 12,000+ learners
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="hero-right">
+              <div className="hero-visual">
+                <div className="hero-glow"></div>
+                <div className="ai-interview-card">
+                  <div className="ai-card-header">
+                    <div className="ai-card-title">
+                      <div className="mini-ai-icon">
+                        <FaRobot />
+                      </div>
+                      <div>
+                        <span>AI Interviewer</span>
+                        <small>
+                          Technical Round
+                        </small>
+                      </div>
+                    </div>
+                    <span className="live-badge">
+                      <span></span>
+                      LIVE
+                    </span>
+                  </div>
+                  <div className="question-content">
+                    <span className="question-label">
+                      QUESTION 01
+                    </span>
+                    <h3>
+                      Explain the concept of
+                      Object-Oriented Programming
+                      in Java.
+                    </h3>
+                    <div className="question-tag">
+                      Java
+                    </div>
+                  </div>
+                  <div className="answer-wave">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div className="recording-status">
+                    <span className="recording-dot"></span>
+                    <span>
+                      Listening to your answer...
+                    </span>
+                    <strong>
+                      00:42
+                    </strong>
+                  </div>
+                </div>
+                <div className="robot-wrapper">
+                  <div className="robot-ring"></div>
+                  <div className="robot">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png"
+                      alt="AI Interview Assistant"
+                    />
+                  </div>
+                </div>
+                <div className="feedback-card">
+                  <div className="feedback-header">
+                    <div className="feedback-icon">
+                      <FaCheckCircle />
+                    </div>
+                    <div>
+                      <span>AI Feedback</span>
+                      <small>
+                        Just now
+                      </small>
+                    </div>
+                  </div>
+                  <div className="feedback-score">
+                    <strong>
+                      8.7
+                    </strong>
+                    <span>
+                      /10
+                    </span>
+                  </div>
+                  <div className="feedback-items">
+                    <div>
+                      <FaCheckCircle />
+                      <span>Good Explanation</span>
+                    </div>
+                    <div>
+                      <FaCheckCircle />
+                      <span>Relevant Example</span>
+                    </div>
+                    <div className="feedback-warning">
+                      <span className="warning-icon">!</span>
+                      <span>Improve Confidence</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div className="feature-card">
-            <div className="feature-icon">📊</div>
-            <h3>Detailed Analytics</h3>
-            <p>
-              Track your strengths and weaknesses after every interview.
-            </p>
+        </section>
+                {/* ==================================================
+            STATISTICS
+        ================================================== */}
+        <section className="stats-section">
+          <div className="stats-container">
+            {stats.map((stat) => (
+              <div
+                className="stat-box"
+                key={stat.label}
+              >
+                <h2>{stat.value}</h2>
+                <p>{stat.label}</p>
+              </div>
+            ))}
           </div>
-
-          <div className="feature-card">
-            <div className="feature-icon">📄</div>
-            <h3>Resume Review</h3>
-            <p>
-              Upload your resume and receive AI suggestions instantly.
-            </p>
+        </section>
+        {/* ==================================================
+            FEATURES
+        ================================================== */}
+        <section
+          className="features-section"
+          id="features"
+        >
+          <div className="section-container">
+            <div className="section-heading">
+              <span className="section-eyebrow">
+                POWERFUL FEATURES
+              </span>
+              <h2>
+                Everything You Need
+                <br />
+                <span className="gradient-text">
+                  To Crack Your Interview
+                </span>
+              </h2>
+              <p>
+                One platform to practice, analyze and improve
+                every part of your interview performance.
+              </p>
+            </div>
+            <div className="features-grid">
+              {features.map((feature, index) => (
+                <article
+                  className="feature-card"
+                  key={feature.title}
+                >
+                  <div className="feature-card-top">
+                    <div className="feature-icon">
+                      {feature.icon}
+                    </div>
+                    <span className="feature-number">
+                      0{index + 1}
+                    </span>
+                  </div>
+                  <h3>{feature.title}</h3>
+                  <p>{feature.description}</p>
+                  <div className="feature-link">
+                    <span>Explore Feature</span>
+                    <FaArrowRight />
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-
-          <div className="feature-card">
-            <div className="feature-icon">📥</div>
-            <h3>PDF Reports</h3>
-            <p>
-              Download interview reports and improve continuously.
-            </p>
+        </section>
+        {/* ==================================================
+            HOW IT WORKS
+        ================================================== */}
+        <section
+          className="work-section"
+          id="how-it-works"
+        >
+          <div className="section-container">
+            <div className="section-heading centered">
+              <span className="section-eyebrow">
+                SIMPLE PROCESS
+              </span>
+              <h2>
+                Your Journey To
+                <br />
+                <span className="gradient-text">
+                  Interview Success
+                </span>
+              </h2>
+              <p>
+                Start practicing in minutes and turn your
+                weaknesses into strengths.
+              </p>
+            </div>
+            <div className="work-grid">
+              {steps.map((step, index) => (
+                <div
+                  className="work-card"
+                  key={step.number}
+                >
+                  <div className="work-card-header">
+                    <div className="work-number">
+                      {step.number}
+                    </div>
+                    {index !== steps.length - 1 && (
+                      <div className="step-line">
+                        <span></span>
+                      </div>
+                    )}
+                  </div>
+                  <h3>{step.title}</h3>
+                  <p>{step.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="journey-btn">
+              <button
+                type="button"
+                onClick={handleRegister}
+              >
+                <span>Start Your Journey</span>
+                <FaArrowRight />
+              </button>
+            </div>
           </div>
-
-        </div>
-
-      </section>
-
-      {/* ===================== HOW IT WORKS ===================== */}
-
-      <section className="work-section">
-
-        <div className="section-title">
-
-          <h2>How It Works?</h2>
-
-          <p>
-            Complete your mock interview in four simple steps.
-          </p>
-
-        </div>
-
-        <div className="work-grid">
-
-          <div className="work-card">
-            <div className="work-number">1</div>
-            <h3>Choose Topic</h3>
-            <p>Select Java, React, DSA, Node.js or any interview category.</p>
+        </section>
+        {/* ==================================================
+            TESTIMONIALS
+        ================================================== */}
+        <section className="testimonial-section">
+          <div className="section-container">
+            <div className="section-heading centered">
+              <span className="section-eyebrow">
+                SUCCESS STORIES
+              </span>
+              <h2>
+                Loved By
+                <span className="gradient-text">
+                  {" "}Learners
+                </span>
+              </h2>
+              <p>
+                See how students are using AI-powered practice
+                to become more confident interview candidates.
+              </p>
+            </div>
+            <div className="testimonial-grid">
+              {testimonials.map((testimonial) => (
+                <article
+                  className="testimonial-card"
+                  key={testimonial.name}
+                >
+                  <div className="testimonial-top">
+                    <div className="testimonial-user">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                      />
+                      <div>
+                        <h3>{testimonial.name}</h3>
+                        <span>{testimonial.role}</span>
+                      </div>
+                    </div>
+                    <div className="quote-mark">
+                      "
+                    </div>
+                  </div>
+                  <div className="testimonial-stars">
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                    <FaStar />
+                  </div>
+                  <p>{testimonial.feedback}</p>
+                  <div className="verified-review">
+                    <FaCheckCircle />
+                    <span>Verified Learner</span>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
-
-          <div className="work-card">
-            <div className="work-number">2</div>
-            <h3>Answer Questions</h3>
-            <p>Answer AI-generated interview questions confidently.</p>
+        </section>
+        {/* ==================================================
+            COMPANIES
+        ================================================== */}
+        <section
+          className="company-section"
+          id="companies"
+        >
+          <div className="section-container">
+            <div className="section-heading centered">
+              <span className="section-eyebrow">
+                PRACTICE WITH CONFIDENCE
+              </span>
+              <h2>
+                Prepare For Your
+                <span className="gradient-text">
+                  {" "}Dream Company
+                </span>
+              </h2>
+              <p>
+                Practice questions inspired by the interview
+                patterns of leading companies.
+              </p>
+            </div>
+            <div className="company-grid">
+              {companies.map((company) => (
+                <div
+                  className="company-card"
+                  key={company}
+                >
+                  <div className="company-logo">
+                    {company.charAt(0)}
+                  </div>
+                  <span>{company}</span>
+                  <small>Interview Prep</small>
+                </div>
+              ))}
+            </div>
           </div>
-
-          <div className="work-card">
-            <div className="work-number">3</div>
-            <h3>AI Evaluation</h3>
-            <p>Get detailed feedback and improvement suggestions.</p>
+        </section>
+        {/* ==================================================
+            ABOUT / CTA
+        ================================================== */}
+        <section
+          className="cta-section"
+          id="about"
+        >
+          <div className="cta-container">
+            <div className="cta-glow"></div>
+            <div className="cta-content">
+              <span className="cta-badge">
+                <FaRobot />
+                AI-Powered Preparation
+              </span>
+              <h2>
+                Ready To Crack
+                <br />
+                <span>Your Dream Job?</span>
+              </h2>
+              <p>
+                Stop preparing alone. Practice with AI,
+                understand your mistakes, and walk into your
+                next interview with confidence.
+              </p>
+              <button
+                type="button"
+                className="cta-btn"
+                onClick={handleRegister}
+              >
+                <span>Get Started For Free</span>
+                <FaArrowRight />
+              </button>
+              <div className="cta-trust">
+                <FaCheckCircle />
+                <span>No credit card required</span>
+                <span className="trust-divider">•</span>
+                <FaCheckCircle />
+                <span>Start practicing instantly</span>
+              </div>
+            </div>
           </div>
-
-          <div className="work-card">
-            <div className="work-number">4</div>
-            <h3>Track Progress</h3>
-            <p>Monitor your interview performance and become job ready.</p>
-          </div>
-
-        </div>
-
-        <div className="journey-btn">
-
-          <button
-            onClick={() => navigate("/register")}
-          >
-            Start Your Journey →
-          </button>
-
-        </div>
-
-      </section>
-
-      {/* ===================== TESTIMONIALS ===================== */}
-
-      <section className="testimonial-section">
-
-        <div className="section-title">
-
-          <h2>What Students Say</h2>
-
-          <p>
-            Thousands of students improved their interview skills using
-            our AI Mock Interview platform.
-          </p>
-
-        </div>
-
-        <div className="testimonial-grid">
-
-          <div className="testimonial-card">
-
-            <img
-              src="https://i.pravatar.cc/100?img=11"
-              alt=""
-            />
-
-            <h3>Rahul Sharma</h3>
-
-            <span>Software Engineer</span>
-
-            <div className="stars">⭐⭐⭐⭐⭐</div>
-
-            <p>
-              This platform helped me crack my first technical interview.
-            </p>
-
-          </div>
-
-          <div className="testimonial-card">
-
-            <img
-              src="https://i.pravatar.cc/100?img=22"
-              alt=""
-            />
-
-            <h3>Priya Verma</h3>
-
-            <span>Frontend Developer</span>
-
-            <div className="stars">⭐⭐⭐⭐⭐</div>
-
-            <p>
-              Amazing AI feedback and interview experience.
-            </p>
-
-          </div>
-
-          <div className="testimonial-card">
-
-            <img
-              src="https://i.pravatar.cc/100?img=35"
-              alt=""
-            />
-
-            <h3>Aman Singh</h3>
-
-            <span>MERN Developer</span>
-
-            <div className="stars">⭐⭐⭐⭐⭐</div>
-
-            <p>
-              Best platform for placement preparation.
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-      {/* ===================== COMPANIES ===================== */}
-
-      <section className="company-section">
-
-        <div className="section-title">
-
-          <h2>Practice For Top Companies</h2>
-
-        </div>
-
-        <div className="company-grid">
-
-          <div className="company-card">Google</div>
-          <div className="company-card">Microsoft</div>
-          <div className="company-card">Amazon</div>
-          <div className="company-card">TCS</div>
-          <div className="company-card">Infosys</div>
-          <div className="company-card">Wipro</div>
-          <div className="company-card">Accenture</div>
-          <div className="company-card">Capgemini</div>
-
-        </div>
-
-      </section>
-
-      {/* ===================== CTA ===================== */}
-
-      <section className="cta-section">
-
-        <div className="cta-content">
-
-          <h2>Ready To Crack Your Dream Job?</h2>
-
-          <p>
-            Start practicing today with AI Mock Interview.
-          </p>
-
-          <button
-            className="cta-btn"
-            onClick={() => navigate("/register")}
-          >
-            Get Started Free
-          </button>
-
-        </div>
-
-      </section>
-
-      {/* ===================== FOOTER ===================== */}
-
+        </section>
+      </main>
+            {/* ==================================================
+          FOOTER
+      ================================================== */}
       <footer className="footer">
-
-        <div className="footer-top">
-
-          <div className="footer-box">
-
-            <h2>AI Mock Interview</h2>
-
+        <div className="footer-container">
+          <div className="footer-top">
+            <div className="footer-brand">
+              <div className="footer-logo">
+                <div className="logo-icon-wrapper">
+                  <FaRobot />
+                </div>
+                <div>
+                  <h2>AI Mock</h2>
+                  <span>Interview</span>
+                </div>
+              </div>
+              <p>
+                Practice smarter with AI-powered mock interviews
+                and build the confidence to land your dream job.
+              </p>
+              <div className="footer-rating">
+                <div className="footer-stars">
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                  <FaStar />
+                </div>
+                <span>4.9/5 from 12K+ learners</span>
+              </div>
+            </div>
+            <div className="footer-column">
+              <h3>Product</h3>
+              <a href="#home">Home</a>
+              <a href="#features">Features</a>
+              <a href="#how-it-works">How It Works</a>
+              <a href="#companies">Companies</a>
+            </div>
+            <div className="footer-column">
+              <h3>Resources</h3>
+              <a href="#features">Interview Tips</a>
+              <a href="#how-it-works">How To Prepare</a>
+              <a href="#about">FAQ</a>
+              <a href="#companies">Career Guide</a>
+            </div>
+            <div className="footer-column">
+              <h3>Contact</h3>
+              <a href="mailto:gautamkumar910702@gmail.com">
+                gautamkumar910702@gmail.com
+              </a>
+              <a href="tel:+919102237011">
+                +91 9102237011
+              </a>
+              <span className="footer-location">
+                India
+              </span>
+            </div>
+          </div>
+          <div className="footer-divider"></div>
+          <div className="footer-bottom">
             <p>
-              Practice smarter with AI-powered interviews.
+              © 2026 AI Mock Interview. All rights reserved.
             </p>
-
+            <div className="footer-bottom-links">
+              <a href="#about">Privacy Policy</a>
+              <a href="#about">Terms of Service</a>
+            </div>
           </div>
-
-          <div className="footer-box">
-
-            <h3>Quick Links</h3>
-
-            <a href="#">Home</a>
-            <a href="#">Features</a>
-            <a href="#">Pricing</a>
-            <a href="#">About</a>
-
-          </div>
-
-          <div className="footer-box">
-
-            <h3>Resources</h3>
-
-            <a href="#">Interview Tips</a>
-            <a href="#">Blog</a>
-            <a href="#">FAQ</a>
-
-          </div>
-
-          <div className="footer-box">
-
-            <h3>Contact</h3>
-
-            <p>support@aimockinterview.com</p>
-            <p>+91 9876543210</p>
-
-          </div>
-
         </div>
-
-        <hr />
-
-        <div className="footer-bottom">
-
-          <p>
-            © 2026 AI Mock Interview. All Rights Reserved.
-          </p>
-
-        </div>
-
       </footer>
-
-    </>
+      {/* ==================================================
+          WATCH DEMO MODAL
+      ================================================== */}
+      {showDemo && (
+        <div
+          className="demo-modal-overlay"
+          onClick={(event) => {
+            if (event.target === event.currentTarget) {
+              setShowDemo(false);
+            }
+          }}
+        >
+          <div className="demo-modal">
+            {/* ===============================
+                CLOSE BUTTON
+            =============================== */}
+            <button
+              type="button"
+              className="demo-close-btn"
+              onClick={() => setShowDemo(false)}
+              aria-label="Close demo"
+            >
+              <FaTimes />
+            </button>
+            {/* ===============================
+                MODAL HEADER
+            =============================== */}
+            <div className="demo-modal-header">
+              <span className="section-eyebrow">
+                AI MOCK INTERVIEW
+              </span>
+              <h2>
+                See How It
+                <span className="gradient-text">
+                  {" "}Works
+                </span>
+              </h2>
+              <p>
+                Experience how our AI interviewer helps you
+                practice and improve your interview performance.
+              </p>
+            </div>
+            {/* ===============================
+                DEMO VIDEO
+            =============================== */}
+            <div className="demo-video-wrapper">
+              <video
+                className="demo-video"
+                controls
+                preload="metadata"
+                playsInline
+              >
+                <source
+                  src="/demo/ai-interview-demo.mp4"
+                  type="video/mp4"
+                />
+                Your browser does not support video playback.
+              </video>
+            </div>
+            {/* ===============================
+                MODAL ACTIONS
+            =============================== */}
+            <div className="demo-modal-actions">
+              <button
+                type="button"
+                className="demo-login-btn"
+                onClick={handleDemoLogin}
+              >
+                Login
+              </button>
+              <button
+                type="button"
+                className="demo-register-btn"
+                onClick={handleDemoRegister}
+              >
+                Register & Start
+                <FaArrowRight />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
-
 export default Home;
